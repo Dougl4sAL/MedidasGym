@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/style-nav-bar.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/adicionar-medida.css">
+    <title>Novas Medidas</title>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">LOGO</div>
+        <nav class="nav-links">
+            <a href="index.html">Início</a>
+            <a href="#metas">Metas</a>
+            <a href="#medidas">Perfil</a>
+            <a href="#entrar">Entrar</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="topo">
+            <a href="index.html" class="btn">Voltar ao inicio</a>
+            <a href="historico-medida.html" class="btn">Histórico Medidas</a>
+            <a href="#" class="btn">Relatório Coportal</a>
+        </div>
+        
+        <div class="container-info">
+            <form id="form-medidas" class="form-medidas">
+                <h2>Adicionar Nova Medida</h2>
+
+                <div class="medida">
+                    <label for="data">Data:</label>
+                    <input type="date" id="data" name="data" required>
+                </div>
+
+                <div class="medida">
+                    <label for="altura">Altura:</label>
+                    <input type="number" id="altura" name="altura" placeholder="Ex: 180" step="any" required>
+                </div>
+
+                <div class="medida">
+                    <label for="peso">Peso:</label>
+                    <input type="number" id="peso" name="peso" placeholder="Ex: 75.5" step="any" required>
+                </div>
+
+                <div class="medida">
+                    <label for="ombro">Ombro:</label>
+                    <input type="number" id="ombro" name="ombro" placeholder="Ex: 120" step="any">
+                </div>
+
+                <div class="medida">
+                    <label for="peito">Peito:</label>
+                    <input type="number" id="peito" name="peito" placeholder="Ex: 105" step="any">
+                </div>
+
+                <div class="medida">
+                    <label for="b-d">Bíceps D:</label>
+                    <input type="number" id="b-d" name="b-d" placeholder="Ex: 37" step="any">
+                </div>
+
+                <div class="medida">
+                    <label for="b-e">Bíceps E:</label>
+                    <input type="number" id="b-e" name="b-e" placeholder="Ex: 36.5" step="any">
+                </div>
+
+                <div class="medida">
+                    <label for="ante-d">Antebraço D:</label>
+                    <input type="number" id="ante-d" name="ante-d" placeholder="Ex: 30" step="any">
+                </div>
+
+                <div class="medida">
+                    <label for="ante-e">Antebraço E:</label>
+                    <input type="number" id="ante-e" name="ante-e" placeholder="Ex: 29.5" step="any">
+                </div>
+
+                <div class="medida">
+                    <label for="punho">Punho:</label>
+                    <input type="number" id="punho" name="punho" placeholder="Ex: 18" step="any">
+                </div>
+
+                <div class="medida">
+                    <label for="cintura">Cintura:</label>
+                    <input type="number" id="cintura" name="cintura" placeholder="Ex: 85" step="any">
+                </div>
+
+                <div class="medida">
+                    <label for="quadril">Quadril:</label>
+                    <input type="number" id="quadril" name="quadril" placeholder="Ex: 95" step="any">
+                </div>
+
+                <div class="medida">
+                    <label for="coxa-d">Coxa D:</label>
+                    <input type="number" id="coxa-d" name="coxa-d" placeholder="Ex: 60" step="any">
+                </div>
+
+                <div class="medida">
+                    <label for="coxa-e">Coxa E:</label>
+                    <input type="number" id="coxa-e" name="coxa-e" placeholder="Ex: 59.5" step="any">
+                </div>
+
+                <div class="medida">
+                    <label for="coxa-inf-d">Coxa Inferior D:</label>
+                    <input type="number" id="coxa-inf-d" name="coxa-inf-d" placeholder="Ex: 45" step="any">
+                </div>
+
+                <div class="medida">
+                    <label for="coxa-inf-e">Coxa Inferior E:</label>
+                    <input type="number" id="coxa-inf-e" name="coxa-inf-e" placeholder="Ex: 44.5" step="any">
+                </div>
+
+                <div class="medida">
+                    <label for="pantu-d">Panturrilha D:</label>
+                    <input type="number" id="pantu-d" name="pantu-d" placeholder="Ex: 39" step="any">
+                </div>
+
+                <div class="medida">
+                    <label for="pantu-e">Panturrilha E:</label>
+                    <input type="number" id="pantu-e" name="pantu-e" placeholder="Ex: 38.5" step="any">
+                </div>
+
+                <div class="linha-botao">
+                    <button type="submit" class="btn btn-submit">Salvar Medidas</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script type="module" src="../js/medidas.js"></script>
+</body>
+</html>
