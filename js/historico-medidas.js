@@ -35,6 +35,10 @@ function preencherCampos(medida, id) {
 
 // escolhe a 1º data e chama a a função para mostrar a evolução
 Data1.addEventListener('change', () => {
+    dataSelecionada1()
+    exibirEvolucao()
+})
+function dataSelecionada1() {
     const dataSelecionada = Data1.value
 
     if (dataSelecionada == "0") {
@@ -45,13 +49,17 @@ Data1.addEventListener('change', () => {
     const medidaSelecionada = medidas.find( m => m.data === dataSelecionada)
     if (medidaSelecionada) {
         preencherCampos(medidaSelecionada, "m1-")
+        return medidaSelecionada
     }
     
-    exibirEvolucao()
-})
+}
 
 // escolhe a 2º data e chama a a função para mostrar a evolução
 Data2.addEventListener('change', () => {
+    dataSelecionada2()
+    exibirEvolucao()
+})
+function dataSelecionada2() {
     const dataSelecionada = Data2.value
 
     if (dataSelecionada == "0") {
@@ -61,11 +69,10 @@ Data2.addEventListener('change', () => {
 
     const medidaSelecionada = medidas.find( m => m.data === dataSelecionada)
     if (medidaSelecionada) {
-        console.log(medidaSelecionada)
         preencherCampos(medidaSelecionada, "m2-")
+        return medidaSelecionada
     }
-    exibirEvolucao()
-})
+}
 
 // Limpa os campos das medidas caso seja escolhida a opção "Selecionar data"
 function limparCamposMedida(id) {
@@ -86,12 +93,8 @@ function limparCamposMedida(id) {
 
 function exibirEvolucao() {
 
-    if (medidas.length === 0) return
-
-    const primeira = medidas[0]
-    const ultima = medidas[medidas.length - 1]
-
-    console.log("Funcionando")
+    const medidasData1 = dataSelecionada1()
+    const medidasData2 = dataSelecionada2()
 
     // melhoria futura: selecionar todos os span fazendo um array
     // e fazer um forEach inserindo as informações pois os dados na listaMedidas
@@ -99,24 +102,24 @@ function exibirEvolucao() {
     // Ex.: listaMedidas[0].altura - listaMedidas[listaMedias.length -1 ].altura
     // Obs.: Fazer um IF para descartar o id e a data 
 
-    preencherSpan('m-evo-data', calcularDiasEntreDatas(primeira.data, ultima.data))
-    preencherSpan('m-evo-altura', calcularEvolucao(primeira.altura, ultima.altura, 'cm'))
-    preencherSpan('m-evo-peso', calcularEvolucao(primeira.peso, ultima.peso, 'kg'))
-    preencherSpan('m-evo-ombro', calcularEvolucao(primeira.ombro, ultima.ombro, 'cm'))
-    preencherSpan('m-evo-peito', calcularEvolucao(primeira.peito, ultima.peito, 'cm'))
-    preencherSpan('m-evo-b-direito', calcularEvolucao(primeira.bicepsD, ultima.bicepsD, 'cm'))
-    preencherSpan('m-evo-b-esquerdo', calcularEvolucao(primeira.bicepsE, ultima.bicepsE, 'cm'))
-    preencherSpan('m-evo-ante-direito', calcularEvolucao(primeira.antebracoD, ultima.antebracoD, 'cm'))
-    preencherSpan('m-evo-ante-esquerdo', calcularEvolucao(primeira.antebracoE, ultima.antebracoE, 'cm'))
-    preencherSpan('m-evo-punho', calcularEvolucao(primeira.punho, ultima.punho, 'cm'))
-    preencherSpan('m-evo-cintura', calcularEvolucao(primeira.cintura, ultima.cintura, 'cm'))
-    preencherSpan('m-evo-quadril', calcularEvolucao(primeira.quadril, ultima.quadril, 'cm'))
-    preencherSpan('m-evo-coxa-direita', calcularEvolucao(primeira.coxaD, ultima.coxaD, 'cm'))
-    preencherSpan('m-evo-coxa-esquerda', calcularEvolucao(primeira.coxaE, ultima.coxaE, 'cm'))
-    preencherSpan('m-evo-coxa-inf-direita', calcularEvolucao(primeira.coxaInfD, ultima.coxaInfD, 'cm'))
-    preencherSpan('m-evo-coxa-inf-esquerda', calcularEvolucao(primeira.coxaInfE, ultima.coxaInfE, 'cm'))
-    preencherSpan('m-evo-pantu-direita', calcularEvolucao(primeira.panturrilhaD, ultima.panturrilhaD, 'cm'))
-    preencherSpan('m-evo-pantu-esquerda', calcularEvolucao(primeira.panturrilhaE, ultima.panturrilhaE, 'cm'))
+    preencherSpan('m-evo-data', calcularDiasEntreDatas(medidasData1.data, medidasData2.data))
+    preencherSpan('m-evo-altura', calcularEvolucao(medidasData1.altura, medidasData2.altura, 'cm'))
+    preencherSpan('m-evo-peso', calcularEvolucao(medidasData1.peso, medidasData2.peso, 'kg'))
+    preencherSpan('m-evo-ombro', calcularEvolucao(medidasData1.ombro, medidasData2.ombro, 'cm'))
+    preencherSpan('m-evo-peito', calcularEvolucao(medidasData1.peito, medidasData2.peito, 'cm'))
+    preencherSpan('m-evo-bicepsD', calcularEvolucao(medidasData1.bicepsD, medidasData2.bicepsD, 'cm'))
+    preencherSpan('m-evo-bicepsE', calcularEvolucao(medidasData1.bicepsE, medidasData2.bicepsE, 'cm'))
+    preencherSpan('m-evo-antebracoD', calcularEvolucao(medidasData1.antebracoD, medidasData2.antebracoD, 'cm'))
+    preencherSpan('m-evo-antebracoE', calcularEvolucao(medidasData1.antebracoE, medidasData2.antebracoE, 'cm'))
+    preencherSpan('m-evo-punho', calcularEvolucao(medidasData1.punho, medidasData2.punho, 'cm'))
+    preencherSpan('m-evo-cintura', calcularEvolucao(medidasData1.cintura, medidasData2.cintura, 'cm'))
+    preencherSpan('m-evo-quadril', calcularEvolucao(medidasData1.quadril, medidasData2.quadril, 'cm'))
+    preencherSpan('m-evo-coxaD', calcularEvolucao(medidasData1.coxaD, medidasData2.coxaD, 'cm'))
+    preencherSpan('m-evo-coxaE', calcularEvolucao(medidasData1.coxaE, medidasData2.coxaE, 'cm'))
+    preencherSpan('m-evo-coxaInfD', calcularEvolucao(medidasData1.coxaInfD, medidasData2.coxaInfD, 'cm'))
+    preencherSpan('m-evo-coxaInfE', calcularEvolucao(medidasData1.coxaInfE, medidasData2.coxaInfE, 'cm'))
+    preencherSpan('m-evo-panturrilhaD', calcularEvolucao(medidasData1.panturrilhaD, medidasData2.panturrilhaD, 'cm'))
+    preencherSpan('m-evo-panturrilhaE', calcularEvolucao(medidasData1.panturrilhaE, medidasData2.panturrilhaE, 'cm'))
 }
 
 preencherSelectDatas()
