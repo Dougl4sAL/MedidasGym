@@ -2,6 +2,7 @@ import { calcularDiasEntreDatas, getListaMedidas } from "./utilitarios.js"
 import { formatarDataBR } from "./utilitarios.js"
 import { formatarValorFloat } from "./utilitarios.js"
 import { calcularEvolucao } from "./utilitarios.js"
+import { preencherSpan } from "./utilitarios.js"
 
 const listaMedidas = getListaMedidas()
 
@@ -60,12 +61,6 @@ document.addEventListener("DOMContentLoaded", function () {
         window.location.href = 'index.html'
     })
 })
-
-// Para preencher sem gerar erro no console
-function preencherSpan(id, valor) {
-    const el = document.getElementById(id)
-    if (el) el.textContent = valor
-}
   
 function exibirUltimaMedida() {
 
