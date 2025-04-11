@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,8 +28,10 @@
 
         <div class="container-info">
             
-            <div class="container-medidas">
+            <!-- COMPARAÇÃO 1 -->
+            <div class="container-medidas comparacao1">
                 <h2>Comparar 1º mês</h2>
+                <select name="" id="select-data-1"></select>
                 <div class="medida">
                     <label>Data:</label>
                     <span id="m-data">-</span>
@@ -52,22 +54,22 @@
                 </div>
                 <div class="medida">
                     <label>Bíceps D:</label>
-                    <span id="m-b-direito">-</span>
+                    <span id="m-bicepsD">-</span>
                 </div>
                 <div class="medida">
                     <label>Bíceps E:</label>
-                    <span id="m-b-esquerdo">-</span>
+                    <span id="m-bicepsE">-</span>
                 </div>
                 <div class="medida">
                     <label>Antebraço D:</label>
-                    <span id="m-ante-direito">-</span>
+                    <span id="m-antebracoD">-</span>
                 </div>
                 <div class="medida">
                     <label>Antebraço E:</label>
-                    <span id="m-ante-esquerdo">-</span>
+                    <span id="m-antebracoE">-</span>
                 </div>
                 <div class="medida">
-                    <label>Punhos:</label>
+                    <label>Punho:</label>
                     <span id="m-punho">-</span>
                 </div>
                 <div class="medida">
@@ -80,105 +82,108 @@
                 </div>
                 <div class="medida">
                     <label>Coxa D:</label>
-                    <span id="m-coxa-direita">-</span>
+                    <span id="m-coxaD">-</span>
                 </div>
                 <div class="medida">
                     <label>Coxa E:</label>
-                    <span id="m-coxa-esquerda">-</span>
+                    <span id="m-coxaE">-</span>
                 </div>
                 <div class="medida">
                     <label>Coxa Inf. D:</label>
-                    <span id="m-coxa-inf-direita">-</span>
+                    <span id="m-coxaInfD">-</span>
                 </div>
                 <div class="medida">
                     <label>Coxa Inf. E:</label>
-                    <span id="m-coxa-inf-esquerda">-</span>
+                    <span id="m-coxaInfE">-</span>
                 </div>
                 <div class="medida">
                     <label>Panturrilha D:</label>
-                    <span id="m-pantu-direita">-</span>
+                    <span id="m-panturrilhaD">-</span>
                 </div>
                 <div class="medida">
                     <label>Panturrilha E:</label>
-                    <span id="m-pantu-esquerda">-</span>
+                    <span id="m-panturrilhaE">-</span>
                 </div>
-            </div> <!--Fim container-comparacao1-->
+            </div>
 
-            <div class="container-medidas">
+            <!-- COMPARAÇÃO 2 -->
+            <div class="container-medidas comparacao2">
                 <h2>Comparar 2º mês</h2>
+                <select name="" id="select-data-2"></select>
                 <div class="medida">
                     <label>Data:</label>
-                    <span id="m-data">-</span>
+                    <span id="m2-data">-</span>
                 </div>
                 <div class="medida">
                     <label>Altura:</label>
-                    <span id="m-altura">-</span>
+                    <span id="m2-altura">-</span>
                 </div>
                 <div class="medida">
                     <label>Peso:</label>
-                    <span id="m-peso">-</span>
+                    <span id="m2-peso">-</span>
                 </div>
                 <div class="medida">
                     <label>Ombro:</label>
-                    <span id="m-ombro">-</span>
+                    <span id="m2-ombro">-</span>
                 </div>
                 <div class="medida">
                     <label>Peito:</label>
-                    <span id="m-peito">-</span>
+                    <span id="m2-peito">-</span>
                 </div>
                 <div class="medida">
                     <label>Bíceps D:</label>
-                    <span id="m-b-direito">-</span>
+                    <span id="m2-bicepsD">-</span>
                 </div>
                 <div class="medida">
                     <label>Bíceps E:</label>
-                    <span id="m-b-esquerdo">-</span>
+                    <span id="m2-bicepsE">-</span>
                 </div>
                 <div class="medida">
                     <label>Antebraço D:</label>
-                    <span id="m-ante-direito">-</span>
+                    <span id="m2-antebracoD">-</span>
                 </div>
                 <div class="medida">
                     <label>Antebraço E:</label>
-                    <span id="m-ante-esquerdo">-</span>
+                    <span id="m2-antebracoE">-</span>
                 </div>
                 <div class="medida">
-                    <label>Punhos:</label>
-                    <span id="m-punho">-</span>
+                    <label>Punho:</label>
+                    <span id="m2-punho">-</span>
                 </div>
                 <div class="medida">
                     <label>Cintura:</label>
-                    <span id="m-cintura">-</span>
+                    <span id="m2-cintura">-</span>
                 </div>
                 <div class="medida">
                     <label>Quadril:</label>
-                    <span id="m-quadril">-</span>
+                    <span id="m2-quadril">-</span>
                 </div>
                 <div class="medida">
                     <label>Coxa D:</label>
-                    <span id="m-coxa-direita">-</span>
+                    <span id="m2-coxaD">-</span>
                 </div>
                 <div class="medida">
                     <label>Coxa E:</label>
-                    <span id="m-coxa-esquerda">-</span>
+                    <span id="m2-coxaE">-</span>
                 </div>
                 <div class="medida">
                     <label>Coxa Inf. D:</label>
-                    <span id="m-coxa-inf-direita">-</span>
+                    <span id="m2-coxaInfD">-</span>
                 </div>
                 <div class="medida">
                     <label>Coxa Inf. E:</label>
-                    <span id="m-coxa-inf-esquerda">-</span>
+                    <span id="m2-coxaInfE">-</span>
                 </div>
                 <div class="medida">
                     <label>Panturrilha D:</label>
-                    <span id="m-pantu-direita">-</span>
+                    <span id="m2-panturrilhaD">-</span>
                 </div>
                 <div class="medida">
                     <label>Panturrilha E:</label>
-                    <span id="m-pantu-esquerda">-</span>
+                    <span id="m2-panturrilhaE">-</span>
                 </div>
-            </div> <!--Fim container-comparacao2-->
+            </div>
+
 
             <div class="container-evolucao comparacao-evo">
                 <h2>Diferença</h2>

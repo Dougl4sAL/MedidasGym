@@ -90,7 +90,6 @@ export function getListaMedidas() {
     return JSON.parse(localStorage.getItem('medidasGYM')) || []
 }
   
-
 function exibirUltimaMedida() {
     const medidas = JSON.parse(localStorage.getItem('medidasGYM')) || []
 
@@ -151,7 +150,7 @@ function exibirEvolucao() {
 // const medidasGYM = [
 //     {
 //         data: "2025-02-10",
-//         altura: 180, // Altura não foi informada
+//         altura: 180,
 //         peso: 74.9,
 //         ombro: 120.5,
 //         peito: 99,
@@ -171,7 +170,7 @@ function exibirEvolucao() {
 //     },
 //     {
 //         data: "2025-03-17",
-//         altura: 180, // Altura não foi informada
+//         altura: 180,
 //         peso: 78.7,
 //         ombro: 121.5,
 //         peito: 101.5,
@@ -188,6 +187,26 @@ function exibirEvolucao() {
 //         coxaInfE: 49.5,
 //         panturrilhaD: 38.5,
 //         panturrilhaE: 38
-//     }
+//     },
+//      {
+//             data: "2025-04-10",
+//             altura: 180, 
+//             peso: 79.5,
+//             ombro: 122.5,
+//             peito: 102.5,
+//             bicepsD: 38,
+//             bicepsE: 38,
+//             antebracoD: 29.5,
+//             antebracoE: 29,
+//             punho: 17,
+//             cintura: 84.5,
+//             quadril: 102.5,
+//             coxaD: 62,
+//             coxaE: 62,
+//             coxaInfD: 51,
+//             coxaInfE: 50.5,
+//             panturrilhaD: 39,
+//             panturrilhaE: 38.5
+//         }
 // ];
 // localStorage.setItem('medidasGYM', JSON.stringify(medidasGYM));
