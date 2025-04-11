@@ -96,6 +96,17 @@ function exibirEvolucao() {
     const medidasData1 = dataSelecionada1()
     const medidasData2 = dataSelecionada2()
 
+    // evita gerar erro no console apos selecionar uma data e depois
+    // selecionar a opção "Selecionar data" novamente
+    if (!medidasData1 || !medidasData2) {
+       limparCamposMedida("m-evo-")
+        return
+    }
+    if (medidasData1.data === medidasData2.data) {
+        alert("As datas escolhidas são iguais.")
+        return
+    }   
+
     // melhoria futura: selecionar todos os span fazendo um array
     // e fazer um forEach inserindo as informações pois os dados na listaMedidas
     // estão na mesma ordem que devem ser preenchidos.
