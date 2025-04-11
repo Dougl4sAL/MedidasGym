@@ -1,4 +1,9 @@
-let listaMedidas = JSON.parse(localStorage.getItem('medidasGYM')) || []
+import { getListaMedidas } from "./utilitarios.js"
+import { formatarDataBR } from "./utilitarios.js"
+import { formatarValorFloat } from "./utilitarios.js"
+import { calcularEvolucao } from "./utilitarios.js"
+
+const listaMedidas = getListaMedidas()
 
 console.log("Medidas salvas ao carregar a página:", listaMedidas)
 
@@ -12,7 +17,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     form.addEventListener('submit', function (event) {
         event.preventDefault()
-
+        
+        // id com incremento para a listaMedidas
         const novoId = listaMedidas.length > 0
             ? listaMedidas[listaMedidas.length - 1].id + 1
             : 1
@@ -60,70 +66,45 @@ function preencherSpan(id, valor) {
     const el = document.getElementById(id)
     if (el) el.textContent = valor
 }
-
-function calcularEvolucao(primeira, ultima, unidade = '') {
-    const resultado = parseFloat(ultima) - parseFloat(primeira)
-    
-    if (resultado > 0) {
-        return '+ ' + formatar(resultado, unidade)
-    } else if (resultado < 0) {
-        // math.abs() evita na tela fique - - 1.5
-        return '- ' + formatar(Math.abs(resultado), unidade)
-    } else {
-        return '0.0 ' + unidade
-    }
-}
-
-function formatar(valor, unidade = '') {
-    const numero = parseFloat(valor)
-    if (isNaN(numero)) return '-'
-    return numero.toFixed(1) + ' ' + unidade
-}
-
-function formatarDataBR(dataISO) {
-    const [ano, mes, dia] = dataISO.split('-')
-    return `${dia}-${mes}-${ano}`
-}
-
-// para exportar a listaMedidas para os outros .js
-export function getListaMedidas() {
-    return JSON.parse(localStorage.getItem('medidasGYM')) || []
-}
   
 function exibirUltimaMedida() {
-    const medidas = JSON.parse(localStorage.getItem('medidasGYM')) || []
 
-    if (medidas.length === 0) return
+    if (listaMedidas.length === 0) return
 
-    const ultima = medidas[medidas.length - 1]
+    const ultima = listaMedidas[listaMedidas.length - 1]
 
     preencherSpan('m-data', formatarDataBR(ultima.data))
     preencherSpan('m-altura', ultima.altura + ' cm')
-    preencherSpan('m-peso', formatar(ultima.peso, 'kg'))
-    preencherSpan('m-ombro', formatar(ultima.ombro, 'cm'))
-    preencherSpan('m-peito', formatar(ultima.peito, 'cm'))
-    preencherSpan('m-b-direito', formatar(ultima.bicepsD, 'cm'))
-    preencherSpan('m-b-esquerdo', formatar(ultima.bicepsE, 'cm'))
-    preencherSpan('m-ante-direito', formatar(ultima.antebracoD, 'cm'))
-    preencherSpan('m-ante-esquerdo', formatar(ultima.antebracoE, 'cm'))
-    preencherSpan('m-punho', formatar(ultima.punho, 'cm'))
-    preencherSpan('m-cintura', formatar(ultima.cintura, 'cm'))
-    preencherSpan('m-quadril', formatar(ultima.quadril, 'cm'))
-    preencherSpan('m-coxa-direita', formatar(ultima.coxaD, 'cm'))
-    preencherSpan('m-coxa-esquerda', formatar(ultima.coxaE, 'cm'))
-    preencherSpan('m-coxa-inf-direita', formatar(ultima.coxaInfD, 'cm'))
-    preencherSpan('m-coxa-inf-esquerda', formatar(ultima.coxaInfE, 'cm'))
-    preencherSpan('m-pantu-direita', formatar(ultima.panturrilhaD, 'cm'))
-    preencherSpan('m-pantu-esquerda', formatar(ultima.panturrilhaE, 'cm'))
+    preencherSpan('m-peso', formatarValorFloat(ultima.peso, 'kg'))
+    preencherSpan('m-ombro', formatarValorFloat(ultima.ombro, 'cm'))
+    preencherSpan('m-peito', formatarValorFloat(ultima.peito, 'cm'))
+    preencherSpan('m-b-direito', formatarValorFloat(ultima.bicepsD, 'cm'))
+    preencherSpan('m-b-esquerdo', formatarValorFloat(ultima.bicepsE, 'cm'))
+    preencherSpan('m-ante-direito', formatarValorFloat(ultima.antebracoD, 'cm'))
+    preencherSpan('m-ante-esquerdo', formatarValorFloat(ultima.antebracoE, 'cm'))
+    preencherSpan('m-punho', formatarValorFloat(ultima.punho, 'cm'))
+    preencherSpan('m-cintura', formatarValorFloat(ultima.cintura, 'cm'))
+    preencherSpan('m-quadril', formatarValorFloat(ultima.quadril, 'cm'))
+    preencherSpan('m-coxa-direita', formatarValorFloat(ultima.coxaD, 'cm'))
+    preencherSpan('m-coxa-esquerda', formatarValorFloat(ultima.coxaE, 'cm'))
+    preencherSpan('m-coxa-inf-direita', formatarValorFloat(ultima.coxaInfD, 'cm'))
+    preencherSpan('m-coxa-inf-esquerda', formatarValorFloat(ultima.coxaInfE, 'cm'))
+    preencherSpan('m-pantu-direita', formatarValorFloat(ultima.panturrilhaD, 'cm'))
+    preencherSpan('m-pantu-esquerda', formatarValorFloat(ultima.panturrilhaE, 'cm'))
 }
 
 function exibirEvolucao() {
-    const medidas = JSON.parse(localStorage.getItem('medidasGYM')) || []
 
-    if (medidas.length === 0) return
+    if (listaMedidas.length === 0) return
 
-    const primeira = medidas[0]
-    const ultima = medidas[medidas.length - 1]
+    const primeira = listaMedidas[0]
+    const ultima = listaMedidas[listaMedidas.length - 1]
+
+    // melhoria futura: selecionar todos os span fazendo um array
+    // e fazer um forEach inserindo as informações pois os dados na listaMedidas
+    // estão na mesma ordem que devem ser preenchidos.
+    // Ex.: listaMedidas[0].altura - listaMedidas[listaMedias.length -1 ].altura
+    // Obs.: Fazer um IF para descartar o id e a data 
 
     preencherSpan('m-evo-data', formatarDataBR(ultima.data))
     preencherSpan('m-evo-altura', calcularEvolucao(primeira.altura, ultima.altura, 'cm'))

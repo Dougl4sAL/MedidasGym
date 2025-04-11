@@ -1,4 +1,5 @@
-import { getListaMedidas } from "./medidas.js"
+import { getListaMedidas } from "./utilitarios.js"
+import { formatarDataBR } from "./utilitarios.js"
 
 const medidas = getListaMedidas()
 
@@ -9,7 +10,7 @@ function preencherSelectDatas() {
     medidas.forEach( medida => {
         const opcao1 = document.createElement("option")
         opcao1.value = medida.data
-        opcao1.textContent = medida.data
+        opcao1.textContent = formatarDataBR(medida.data)
 
         const opcao2 = opcao1.cloneNode(true)
 
@@ -31,7 +32,7 @@ Data1.addEventListener('change', () => {
     const dataSelecionada = Data1.value
     const medidaSelecionada = medidas.find( m => m.data === dataSelecionada)
     if (medidaSelecionada) {
-        preencherCampos(medidaSelecionada, "m-")
+        preencherCampos(medidaSelecionada, "m1-")
     }
 })
 
