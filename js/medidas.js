@@ -1,4 +1,4 @@
-import { getListaMedidas } from "./utilitarios.js"
+import { calcularDiasEntreDatas, getListaMedidas } from "./utilitarios.js"
 import { formatarDataBR } from "./utilitarios.js"
 import { formatarValorFloat } from "./utilitarios.js"
 import { calcularEvolucao } from "./utilitarios.js"
@@ -106,7 +106,7 @@ function exibirEvolucao() {
     // Ex.: listaMedidas[0].altura - listaMedidas[listaMedias.length -1 ].altura
     // Obs.: Fazer um IF para descartar o id e a data 
 
-    preencherSpan('m-evo-data', formatarDataBR(ultima.data))
+    preencherSpan('m-evo-data', calcularDiasEntreDatas(primeira.data, ultima.data))
     preencherSpan('m-evo-altura', calcularEvolucao(primeira.altura, ultima.altura, 'cm'))
     preencherSpan('m-evo-peso', calcularEvolucao(primeira.peso, ultima.peso, 'kg'))
     preencherSpan('m-evo-ombro', calcularEvolucao(primeira.ombro, ultima.ombro, 'cm'))
