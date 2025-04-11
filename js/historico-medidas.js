@@ -9,6 +9,7 @@ const medidas = getListaMedidas()
 const Data1 = document.getElementById('select-data-1')
 const Data2 = document.getElementById('select-data-2')
 
+// Gera as datas para ser escolhida no 1º e 2º campo
 function preencherSelectDatas() {
     medidas.forEach( medida => {
         const opcao1 = document.createElement("option")
@@ -22,6 +23,7 @@ function preencherSelectDatas() {
     });
 }
 
+// preenche os campos das medida conforme a data escolhida
 function preencherCampos(medida, id) {
     for (const chave in medida ) {
         const span = document.getElementById(`${id}${chave}`)
@@ -31,6 +33,7 @@ function preencherCampos(medida, id) {
     }
 }
 
+// escolhe a 1º data e chama a a função para mostrar a evolução
 Data1.addEventListener('change', () => {
     const dataSelecionada = Data1.value
 
@@ -47,6 +50,7 @@ Data1.addEventListener('change', () => {
     exibirEvolucao()
 })
 
+// escolhe a 2º data e chama a a função para mostrar a evolução
 Data2.addEventListener('change', () => {
     const dataSelecionada = Data2.value
 
@@ -57,11 +61,13 @@ Data2.addEventListener('change', () => {
 
     const medidaSelecionada = medidas.find( m => m.data === dataSelecionada)
     if (medidaSelecionada) {
+        console.log(medidaSelecionada)
         preencherCampos(medidaSelecionada, "m2-")
     }
     exibirEvolucao()
 })
 
+// Limpa os campos das medidas caso seja escolhida a opção "Selecionar data"
 function limparCamposMedida(id) {
     const campos = [
         "data", "altura", "peso", "ombro", "peito",
