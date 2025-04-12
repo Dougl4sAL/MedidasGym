@@ -3,6 +3,7 @@ import { formatarDataBR } from "./utilitarios.js"
 import { calcularDiasEntreDatas } from "./utilitarios.js"
 import { calcularEvolucao } from "./utilitarios.js"
 import { preencherSpan } from "./utilitarios.js"
+import { preencherCampos } from "./utilitarios.js"
 
 const medidas = getListaMedidas()
 
@@ -21,16 +22,6 @@ function preencherSelectDatas() {
         Data1.appendChild(opcao1)
         Data2.appendChild(opcao2)
     });
-}
-
-// preenche os campos das medida conforme a data escolhida
-function preencherCampos(medida, id) {
-    for (const chave in medida ) {
-        const span = document.getElementById(`${id}${chave}`)
-        if (span) {
-            span.textContent = medida[chave]
-        }
-    }
 }
 
 // escolhe a 1º data e chama a a função para mostrar a evolução

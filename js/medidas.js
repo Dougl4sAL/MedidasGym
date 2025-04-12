@@ -3,6 +3,7 @@ import { formatarDataBR } from "./utilitarios.js"
 import { formatarValorFloat } from "./utilitarios.js"
 import { calcularEvolucao } from "./utilitarios.js"
 import { preencherSpan } from "./utilitarios.js"
+import { preencherCampos } from "./utilitarios.js"
 
 const listaMedidas = getListaMedidas()
 
@@ -68,26 +69,13 @@ function exibirUltimaMedida() {
 
     const ultima = listaMedidas[listaMedidas.length - 1]
 
-    preencherSpan('m-data', formatarDataBR(ultima.data))
-    preencherSpan('m-altura', ultima.altura + ' cm')
-    preencherSpan('m-peso', formatarValorFloat(ultima.peso, 'kg'))
-    preencherSpan('m-ombro', formatarValorFloat(ultima.ombro, 'cm'))
-    preencherSpan('m-peito', formatarValorFloat(ultima.peito, 'cm'))
-    preencherSpan('m-b-direito', formatarValorFloat(ultima.bicepsD, 'cm'))
-    preencherSpan('m-b-esquerdo', formatarValorFloat(ultima.bicepsE, 'cm'))
-    preencherSpan('m-ante-direito', formatarValorFloat(ultima.antebracoD, 'cm'))
-    preencherSpan('m-ante-esquerdo', formatarValorFloat(ultima.antebracoE, 'cm'))
-    preencherSpan('m-punho', formatarValorFloat(ultima.punho, 'cm'))
-    preencherSpan('m-cintura', formatarValorFloat(ultima.cintura, 'cm'))
-    preencherSpan('m-quadril', formatarValorFloat(ultima.quadril, 'cm'))
-    preencherSpan('m-coxa-direita', formatarValorFloat(ultima.coxaD, 'cm'))
-    preencherSpan('m-coxa-esquerda', formatarValorFloat(ultima.coxaE, 'cm'))
-    preencherSpan('m-coxa-inf-direita', formatarValorFloat(ultima.coxaInfD, 'cm'))
-    preencherSpan('m-coxa-inf-esquerda', formatarValorFloat(ultima.coxaInfE, 'cm'))
-    preencherSpan('m-pantu-direita', formatarValorFloat(ultima.panturrilhaD, 'cm'))
-    preencherSpan('m-pantu-esquerda', formatarValorFloat(ultima.panturrilhaE, 'cm'))
+    preencherCampos(ultima, 'm-')
 }
 
+// Modificar a função calcularEvolução() para receber apenas 
+// os array primeira e ultima e dentro da função ter um for igual
+// da função preencherCampos() para preencher os spans
+// e deletar a função preencherSpan() que não é mais necessária
 function exibirEvolucao() {
 
     if (listaMedidas.length === 0) return

@@ -22,6 +22,22 @@ export function preencherSpan(id, valor) {
     if (el) el.textContent = valor
 }
 
+// preenche os campos das medida conforme a data escolhida
+export function preencherCampos(medida, id) {
+    for (const chave in medida ) {
+        const span = document.getElementById(`${id}${chave}`)
+        if (span) {
+            if (chave === 'data') {
+                span.textContent = formatarDataBR(medida[chave])
+            } else if (chave === 'peso') {
+                span.textContent = formatarValorFloat(medida[chave], 'kg')
+            } else {
+                span.textContent = formatarValorFloat(medida[chave], 'cm')
+            }
+        }
+    }
+}
+
 // para calcular a diferença entre a Data1 e Data2
 export function calcularEvolucao(primeira, ultima, unidade = '') {
     const resultado = parseFloat(ultima) - parseFloat(primeira)
