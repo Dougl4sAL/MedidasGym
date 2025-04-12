@@ -1,8 +1,7 @@
 import { calcularDiasEntreDatas, getListaMedidas } from "./utilitarios.js"
 import { formatarDataBR } from "./utilitarios.js"
 import { formatarValorFloat } from "./utilitarios.js"
-import { calcularEvolucao } from "./utilitarios.js"
-import { preencherSpan } from "./utilitarios.js"
+import { preencherEvolucao } from "./utilitarios.js"
 import { preencherCampos } from "./utilitarios.js"
 
 const listaMedidas = getListaMedidas()
@@ -22,29 +21,28 @@ document.addEventListener("DOMContentLoaded", function () {
         
         // id com incremento para a listaMedidas
         const novoId = listaMedidas.length > 0
-            ? listaMedidas[listaMedidas.length - 1].id + 1
-            : 1
+            ? listaMedidas[listaMedidas.length - 1].id + 1 : 1
 
         const novaMedida = {
             id: novoId,
-            data: document.getElementById('data').value,
-            altura: parseFloat(document.getElementById('altura').value),
-            peso: parseFloat(document.getElementById('peso').value),
-            ombro: parseFloat(document.getElementById('ombro').value),
-            peito: parseFloat(document.getElementById('peito').value),
-            bicepsD: parseFloat(document.getElementById('b-d').value),
-            bicepsE: parseFloat(document.getElementById('b-e').value),
-            antebracoD: parseFloat(document.getElementById('ante-d').value),
-            antebracoE: parseFloat(document.getElementById('ante-e').value),
-            punho: parseFloat(document.getElementById('punho').value),
-            cintura: parseFloat(document.getElementById('cintura').value),
-            quadril: parseFloat(document.getElementById('quadril').value),
-            coxaD: parseFloat(document.getElementById('coxa-d').value),
-            coxaE: parseFloat(document.getElementById('coxa-e').value),
-            coxaInfD: parseFloat(document.getElementById('coxa-inf-d').value),
-            coxaInfE: parseFloat(document.getElementById('coxa-inf-e').value),
-            panturrilhaD: parseFloat(document.getElementById('pantu-d').value),
-            panturrilhaE: parseFloat(document.getElementById('pantu-e').value)
+            data: document.getElementById('m-data').value,
+            altura: parseFloat(document.getElementById('m-altura').value),
+            peso: parseFloat(document.getElementById('m-peso').value),
+            ombro: parseFloat(document.getElementById('m-ombro').value),
+            peito: parseFloat(document.getElementById('m-peito').value),
+            bicepsD: parseFloat(document.getElementById('m-bicepsD').value),
+            bicepsE: parseFloat(document.getElementById('m-bicepsE').value),
+            antebracoD: parseFloat(document.getElementById('m-antebracoD').value),
+            antebracoE: parseFloat(document.getElementById('m-antebracoE').value),
+            punho: parseFloat(document.getElementById('m-punho').value),
+            cintura: parseFloat(document.getElementById('m-cintura').value),
+            quadril: parseFloat(document.getElementById('m-quadril').value),
+            coxaD: parseFloat(document.getElementById('m-coxaD').value),
+            coxaE: parseFloat(document.getElementById('m-coxaE').value),
+            coxaInfD: parseFloat(document.getElementById('m-coxaInfD').value),
+            coxaInfE: parseFloat(document.getElementById('m-coxaInfE').value),
+            panturrilhaD: parseFloat(document.getElementById('m-panturrilhaD').value),
+            panturrilhaE: parseFloat(document.getElementById('m-panturrilhaE').value)
         }
 
         listaMedidas.push(novaMedida)
@@ -72,10 +70,6 @@ function exibirUltimaMedida() {
     preencherCampos(ultima, 'm-')
 }
 
-// Modificar a função calcularEvolução() para receber apenas 
-// os array primeira e ultima e dentro da função ter um for igual
-// da função preencherCampos() para preencher os spans
-// e deletar a função preencherSpan() que não é mais necessária
 function exibirEvolucao() {
 
     if (listaMedidas.length === 0) return
@@ -83,30 +77,11 @@ function exibirEvolucao() {
     const primeira = listaMedidas[0]
     const ultima = listaMedidas[listaMedidas.length - 1]
 
-    // melhoria futura: selecionar todos os span fazendo um array
-    // e fazer um forEach inserindo as informações pois os dados na listaMedidas
-    // estão na mesma ordem que devem ser preenchidos.
-    // Ex.: listaMedidas[0].altura - listaMedidas[listaMedias.length -1 ].altura
-    // Obs.: Fazer um IF para descartar o id e a data 
+    // Chama a função preecherEvolucao() onde ela seleciona os ids
+    // em seguida chama a função calcularEvolucao() para calcular a diferença entre as medidas
+    // e preencher os campos com o resultado
+    preencherEvolucao(primeira, ultima)
 
-    preencherSpan('m-evo-data', calcularDiasEntreDatas(primeira.data, ultima.data))
-    preencherSpan('m-evo-altura', calcularEvolucao(primeira.altura, ultima.altura, 'cm'))
-    preencherSpan('m-evo-peso', calcularEvolucao(primeira.peso, ultima.peso, 'kg'))
-    preencherSpan('m-evo-ombro', calcularEvolucao(primeira.ombro, ultima.ombro, 'cm'))
-    preencherSpan('m-evo-peito', calcularEvolucao(primeira.peito, ultima.peito, 'cm'))
-    preencherSpan('m-evo-b-direito', calcularEvolucao(primeira.bicepsD, ultima.bicepsD, 'cm'))
-    preencherSpan('m-evo-b-esquerdo', calcularEvolucao(primeira.bicepsE, ultima.bicepsE, 'cm'))
-    preencherSpan('m-evo-ante-direito', calcularEvolucao(primeira.antebracoD, ultima.antebracoD, 'cm'))
-    preencherSpan('m-evo-ante-esquerdo', calcularEvolucao(primeira.antebracoE, ultima.antebracoE, 'cm'))
-    preencherSpan('m-evo-punho', calcularEvolucao(primeira.punho, ultima.punho, 'cm'))
-    preencherSpan('m-evo-cintura', calcularEvolucao(primeira.cintura, ultima.cintura, 'cm'))
-    preencherSpan('m-evo-quadril', calcularEvolucao(primeira.quadril, ultima.quadril, 'cm'))
-    preencherSpan('m-evo-coxa-direita', calcularEvolucao(primeira.coxaD, ultima.coxaD, 'cm'))
-    preencherSpan('m-evo-coxa-esquerda', calcularEvolucao(primeira.coxaE, ultima.coxaE, 'cm'))
-    preencherSpan('m-evo-coxa-inf-direita', calcularEvolucao(primeira.coxaInfD, ultima.coxaInfD, 'cm'))
-    preencherSpan('m-evo-coxa-inf-esquerda', calcularEvolucao(primeira.coxaInfE, ultima.coxaInfE, 'cm'))
-    preencherSpan('m-evo-pantu-direita', calcularEvolucao(primeira.panturrilhaD, ultima.panturrilhaD, 'cm'))
-    preencherSpan('m-evo-pantu-esquerda', calcularEvolucao(primeira.panturrilhaE, ultima.panturrilhaE, 'cm'))
 }
 
 // localStorage.clear();

@@ -4,6 +4,7 @@ import { calcularDiasEntreDatas } from "./utilitarios.js"
 import { calcularEvolucao } from "./utilitarios.js"
 import { preencherSpan } from "./utilitarios.js"
 import { preencherCampos } from "./utilitarios.js"
+import { preencherEvolucao } from "./utilitarios.js"
 
 const medidas = getListaMedidas()
 
@@ -29,6 +30,7 @@ Data1.addEventListener('change', () => {
     dataSelecionada1()
     exibirEvolucao()
 })
+
 function dataSelecionada1() {
     const dataSelecionada = Data1.value
 
@@ -95,33 +97,12 @@ function exibirEvolucao() {
     }
     if (medidasData1.data === medidasData2.data) {
         alert("As datas escolhidas são iguais.")
-        return
     }   
 
-    // melhoria futura: selecionar todos os span fazendo um array
-    // e fazer um forEach inserindo as informações pois os dados na listaMedidas
-    // estão na mesma ordem que devem ser preenchidos.
-    // Ex.: listaMedidas[0].altura - listaMedidas[listaMedias.length -1 ].altura
-    // Obs.: Fazer um IF para descartar o id e a data 
-
-    preencherSpan('m-evo-data', calcularDiasEntreDatas(medidasData1.data, medidasData2.data))
-    preencherSpan('m-evo-altura', calcularEvolucao(medidasData1.altura, medidasData2.altura, 'cm'))
-    preencherSpan('m-evo-peso', calcularEvolucao(medidasData1.peso, medidasData2.peso, 'kg'))
-    preencherSpan('m-evo-ombro', calcularEvolucao(medidasData1.ombro, medidasData2.ombro, 'cm'))
-    preencherSpan('m-evo-peito', calcularEvolucao(medidasData1.peito, medidasData2.peito, 'cm'))
-    preencherSpan('m-evo-bicepsD', calcularEvolucao(medidasData1.bicepsD, medidasData2.bicepsD, 'cm'))
-    preencherSpan('m-evo-bicepsE', calcularEvolucao(medidasData1.bicepsE, medidasData2.bicepsE, 'cm'))
-    preencherSpan('m-evo-antebracoD', calcularEvolucao(medidasData1.antebracoD, medidasData2.antebracoD, 'cm'))
-    preencherSpan('m-evo-antebracoE', calcularEvolucao(medidasData1.antebracoE, medidasData2.antebracoE, 'cm'))
-    preencherSpan('m-evo-punho', calcularEvolucao(medidasData1.punho, medidasData2.punho, 'cm'))
-    preencherSpan('m-evo-cintura', calcularEvolucao(medidasData1.cintura, medidasData2.cintura, 'cm'))
-    preencherSpan('m-evo-quadril', calcularEvolucao(medidasData1.quadril, medidasData2.quadril, 'cm'))
-    preencherSpan('m-evo-coxaD', calcularEvolucao(medidasData1.coxaD, medidasData2.coxaD, 'cm'))
-    preencherSpan('m-evo-coxaE', calcularEvolucao(medidasData1.coxaE, medidasData2.coxaE, 'cm'))
-    preencherSpan('m-evo-coxaInfD', calcularEvolucao(medidasData1.coxaInfD, medidasData2.coxaInfD, 'cm'))
-    preencherSpan('m-evo-coxaInfE', calcularEvolucao(medidasData1.coxaInfE, medidasData2.coxaInfE, 'cm'))
-    preencherSpan('m-evo-panturrilhaD', calcularEvolucao(medidasData1.panturrilhaD, medidasData2.panturrilhaD, 'cm'))
-    preencherSpan('m-evo-panturrilhaE', calcularEvolucao(medidasData1.panturrilhaE, medidasData2.panturrilhaE, 'cm'))
+    // Chama a função preecherEvolucao() onde ela seleciona os ids
+    // em seguida chama a função calcularEvolucao() para calcular a diferença entre as medidas
+    // e preencher os campos com o resultado
+    preencherEvolucao(medidasData1, medidasData2)
 }
 
 preencherSelectDatas()

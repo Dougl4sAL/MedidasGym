@@ -38,6 +38,24 @@ export function preencherCampos(medida, id) {
     }
 }
 
+// para enviar os dados para função calcularEvolucao()
+export function preencherEvolucao(primeira, ultima) {
+    for (const chave in primeira) {
+        // o id 'm-evo-' é prefixo de todos os span que vao receber o valor
+        const span = document.getElementById(`m-evo-${chave}`)
+        if (span) {
+            if (chave === 'id') continue
+            if (chave === 'data') {
+                span.textContent = calcularDiasEntreDatas(primeira[chave], ultima[chave])
+            } else if (chave === 'peso') {
+                span.textContent = calcularEvolucao(primeira[chave], ultima[chave], 'kg')
+            } else {
+                span.textContent = calcularEvolucao(primeira[chave], ultima[chave], 'cm')
+            }
+        }
+    }
+}
+
 // para calcular a diferença entre a Data1 e Data2
 export function calcularEvolucao(primeira, ultima, unidade = '') {
     const resultado = parseFloat(ultima) - parseFloat(primeira)
@@ -70,5 +88,5 @@ export function calcularDiasEntreDatas(data1, data2) {
     } else {
         return diferencaEmDias;
     }
-  }
+}
   
