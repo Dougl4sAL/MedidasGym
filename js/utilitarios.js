@@ -16,12 +16,6 @@ export function formatarValorFloat(valor, unidade = '') {
     return numero.toFixed(1) + ' ' + unidade
 }
 
-// Para preencher span sem gerar erro no console
-export function preencherSpan(id, valor) {
-    const el = document.getElementById(id)
-    if (el) el.textContent = valor
-}
-
 // preenche os campos das medida conforme a data escolhida
 export function preencherCampos(medida, id) {
     for (const chave in medida ) {

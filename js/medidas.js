@@ -1,6 +1,4 @@
 import { calcularDiasEntreDatas, getListaMedidas } from "./utilitarios.js"
-import { formatarDataBR } from "./utilitarios.js"
-import { formatarValorFloat } from "./utilitarios.js"
 import { preencherEvolucao } from "./utilitarios.js"
 import { preencherCampos } from "./utilitarios.js"
 
