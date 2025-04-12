@@ -1,8 +1,5 @@
 import { getListaMedidas } from "./utilitarios.js"
 import { formatarDataBR } from "./utilitarios.js"
-import { calcularDiasEntreDatas } from "./utilitarios.js"
-import { calcularEvolucao } from "./utilitarios.js"
-import { preencherSpan } from "./utilitarios.js"
 import { preencherCampos } from "./utilitarios.js"
 import { preencherEvolucao } from "./utilitarios.js"
 
