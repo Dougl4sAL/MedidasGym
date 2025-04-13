@@ -10,7 +10,7 @@ export function formatarDataBR(dataISO) {
 }
 
 // para formatar os valores com casa decimais
-export function formatarValorFloat(valor, unidade = '') {
+function formatarValorFloat(valor, unidade = '') {
     const numero = parseFloat(valor)
     if (isNaN(numero)) return '-'
     return numero.toFixed(1) + ' ' + unidade
@@ -51,7 +51,7 @@ export function preencherEvolucao(primeira, ultima) {
 }
 
 // para calcular a diferença entre a Data1 e Data2
-export function calcularEvolucao(primeira, ultima, unidade = '') {
+function calcularEvolucao(primeira, ultima, unidade = '') {
     const resultado = parseFloat(ultima) - parseFloat(primeira)
 
     if (resultado > 0) {
@@ -64,7 +64,7 @@ export function calcularEvolucao(primeira, ultima, unidade = '') {
     }
 }
 
-export function calcularDiasEntreDatas(data1, data2) {
+function calcularDiasEntreDatas(data1, data2) {
     // converte as datas para um formato que possa calcular
     const d1 = new Date(data1);
     const d2 = new Date(data2);

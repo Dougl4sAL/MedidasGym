@@ -1,7 +1,5 @@
-import { getListaMedidas } from "./utilitarios.js"
-import { formatarDataBR } from "./utilitarios.js"
-import { preencherCampos } from "./utilitarios.js"
-import { preencherEvolucao } from "./utilitarios.js"
+import { getListaMedidas, formatarDataBR } from "./utilitarios.js"
+import { preencherCampos, preencherEvolucao } from "./utilitarios.js"
 
 const medidas = getListaMedidas()
 
