@@ -1,0 +1,8 @@
+# A pasta "public" geralmente contém arquivos estáticos que serão acessados diretamente pelo navegador.
+# Exemplos de arquivos que podem estar nesta pasta:
+
+# - Imagens (ex: logo.png, background.jpg)
+# - Arquivos CSS (ex: estilos.css)
+# - Arquivos JavaScript estáticos (ex: script.js)
+# - Fontes (ex: custom-font.woff)
+# - Outros recursos públicos, como ícones ou documentos para download
