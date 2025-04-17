@@ -1,6 +1,7 @@
 // src/components/Buttons.jsx
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
+import '../styles/Buttons.css'
 
 // Botão genérico reutilizável
 export const GymButton = ({ to, text, className = '' }) => (

@@ -10,31 +10,6 @@
     background-color: var(--cor-fundo-claro);
 }
 
-.topo {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 10px;
-}
-
-.btn {
-    text-align: center;
-    margin: 0 auto;
-    padding: 10px 50px;
-    background-color: var(--cor-primaria);
-    color: var(--cor-texto);
-    border: none;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: background 0.3s;
-}
-
-.btn:hover {
-    background-color: var(--cor-primaria-hover);
-}
-
 .container-info {
     display: flex;
     flex-direction: row;

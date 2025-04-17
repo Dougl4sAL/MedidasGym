@@ -1,6 +1,7 @@
 import React from 'react'
 import { HomeButtons } from './components/Buttons'
 import Navbar  from './components/NavBar'
+import './styles/Home.css'
 
 function App() {
   return (
@@ -11,6 +12,11 @@ function App() {
         <HomeButtons />
 
         <div className="container-info">
+
+          <div className="container-medidas">
+          <h2>Medidas Atuais</h2>
+
+          </div>
 
         </div>
         
