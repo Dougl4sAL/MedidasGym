@@ -1,11 +1,21 @@
-import React from 'react';
+import React from 'react'
+import { HomeButtons } from './components/Buttons'
+import { Navbar } from './components/NavBar'
 
 function App() {
   return (
-    <div>
-      <h1>Medidas GYM</h1>
-      <p>Seu projeto React funcionadno</p>
+    <>
+    <Navbar />
+
+    <div className="container">
+      <HomeButtons />
+
+      <div className="container-info">
+
+      </div>
+      
     </div>
+    </>
   );
 }
 
