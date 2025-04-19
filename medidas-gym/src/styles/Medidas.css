@@ -1,8 +1,9 @@
-.medida {
+.medida-item {
     display: flex;
     justify-content: space-between;
     background-color: var(--cor-fundo-medio);
     padding: 10px 25px;
+    margin-bottom: 10px;
     border-radius: 5px;
     color: var(--cor-texto);
 }

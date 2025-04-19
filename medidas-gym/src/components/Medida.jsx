@@ -6,10 +6,10 @@ const ListaMedidas = getListaMedidas()
 
 console.log("Medidas salvas jsx:", ListaMedidas[ListaMedidas.length - 1])
 
-export const GymMedidas = ( {nomeMedida, medida = '-'} ) => {
+export const GymMedidas = ( {nomeMedida, medida} ) => {
     return (
         <div className="medida-item">
-            <label>{nomeMedida}:</label>
+            <label>{nomeMedida}:</label>            
             <span>{medida}</span>
         </div>
     )
