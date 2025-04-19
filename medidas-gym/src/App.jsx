@@ -1,6 +1,7 @@
 import React from 'react'
 import { HomeButtons } from './components/Buttons'
 import Navbar  from './components/NavBar'
+import { MedidasHomePage } from './components/Medida'
 import './styles/App.css'
 
 function App() {
@@ -14,8 +15,8 @@ function App() {
         <div className="container-info">
 
           <div className="container-medidas">
-          <h2>Medidas Atuais</h2>
-
+            <h2>Medidas Atuais</h2>
+            <MedidasHomePage /> 
           </div>
 
         </div>

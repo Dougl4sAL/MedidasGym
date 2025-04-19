@@ -32,25 +32,12 @@ h2 {
     max-width: 600px;
 }
 
-.medida {
-    display: flex;
-    justify-content: space-between;
-    background-color: var(--cor-fundo-medio);
-    padding: 10px 25px;
-    border-radius: 5px;
-    color: var(--cor-texto);
-}
-
 .medida-evo {
     text-align: center;
     background-color: var(--cor-fundo-medio);
     padding: 10px 25px;
     border-radius: 5px;
     color: var(--cor-texto);
-}
-
-.container-medidas [id^="m-"] {
-    padding-left: 90px;
 }
 
 select[id^="select-data-"] {

@@ -1,49 +1,45 @@
-import ProTypes from 'prop-types';
-import getListaMedidas from '../utils/storege';
+import PropTypes from 'prop-types'
+import getListaMedidas from '../utils/storege'
+import '../styles/Medidas.css'
 
 const ListaMedidas = getListaMedidas()
 
-const MedidaPropTypes = {
-    data: ProTypes.string.isRequired,
-    altura: ProTypes.number.isRequired,
-    peso: ProTypes.number.isRequired,
-    ombro: ProTypes.number.isRequired,
-    peito: ProTypes.number.isRequired,
-    bicepsD: ProTypes.number.isRequired,
-    bicepsE: ProTypes.number.isRequired,
-    antebracoD: ProTypes.number.isRequired,
-    antebracoE: ProTypes.number.isRequired,
-    punho: ProTypes.number.isRequired,
-    cintura: ProTypes.number.isRequired,
-    quadril: ProTypes.number.isRequired,
-    coxaD: ProTypes.number.isRequired,
-    coxaE: ProTypes.number.isRequired,
-    coxaInfD: ProTypes.number.isRequired,
-    coxaInfE: ProTypes.number.isRequired,
-    panturrilhaD: ProTypes.number.isRequired,
-    panturrilhaE: ProTypes.number.isRequired
+console.log("Medidas salvas jsx:", ListaMedidas[ListaMedidas.length - 1])
+
+export const GymMedidas = ( {nomeMedida, medida = '-'} ) => {
+    return (
+        <div className="medida-item">
+            <label>{nomeMedida}:</label>
+            <span>{medida}</span>
+        </div>
+    )
 }
 
-export const GymMedidas = ( id ) => {
-    
-}
-
+// falta o ProTypes da variavel medida
+GymMedidas.propTypes = {
+    nomeMedida: PropTypes.string.isRequired,
+    medida: PropTypes.string
+  }
 const NomeMedidas = [
-    'data', 'altura', 'peso', 'ombro', 'peito', 'bicepsD',
-    'bicepsE', 'antebracoD', 'antebracoE', 'punho', 'cintura',
-    'quadril', 'coxaD', 'coxaE', 'coxaInfD', 'coxaInfE',
-     'panturrilhaD', 'panturrilhaE'
+    'Data', 'Altura', 'Peso', 'Ombro', 'Peito', 'Bíceps D',
+    'Bíceps E', 'Antebraço D', 'Antebraço E', 'Punhos', 'Cintura',
+    'Quadril', 'Coxa D', 'Coxa E', 'Coxa Inf. D', 'Coxa Inf. E',
+    'Panturrilha D', 'Panturrilha E'
 ] 
 
 export const Medida = ({ medida }) => {
     return (
         <div className="medida">
-            {NomeMedidas.map((nome, index) => (
-                <div key={index} className="medida-item">
-                    <label>{nome}:</label>
-                    <span> {medida[nome]} </span>
-                </div>
+            {NomeMedidas.map((nomeMedida) => (
+                <GymMedidas key={nomeMedida} 
+                nomeMedida={nomeMedida} 
+                medida={medida[nomeMedida] || '-'} />
             ))}
         </div>
     )
+}
+
+export const MedidasHomePage = () => {
+    const ultimaMedida = ListaMedidas[ListaMedidas.length - 1] || {}
+    return <Medida medida={ultimaMedida} />
 }

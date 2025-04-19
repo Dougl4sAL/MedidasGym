@@ -1,0 +1,12 @@
+.medida {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--cor-fundo-medio);
+    padding: 10px 25px;
+    border-radius: 5px;
+    color: var(--cor-texto);
+}
+
+.container-medidas span {
+    padding-left: 90px;
+}

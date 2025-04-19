@@ -27,18 +27,13 @@ const buttonConfigs = {
 
 // Componente flexível para grupos de botões
 // recebe o array e mapeia ele passando cada elemento para a função
-// GymButton chamando antes a buttonConfigs para chamar todos os atributos
 // key serve para melhorar o react, evitando recriar componentes e melhora desempenho
 export const ButtonGroup = ({ buttons }) => (
   <div className="topo">
-    {/* os ... espalha as propriedades de forma individial
-    sem os ... seria assim: 
-    <GymButton 
-    to={buttonConfigs.adicionar.to} 
-    text={buttonConfigs.adicionar.text} 
-    />   */}
+    {/* Espalha props dinamicamente sem precisar nomear cada uma */}
     {buttons.map((buttonKey) => ( // Chave única para a lista
       <GymButton key={buttonKey} {...buttonConfigs[buttonKey]} />
+      // Os ... espalha { to: "...", text: "..." } como props
     ))}
   </div>
 )
