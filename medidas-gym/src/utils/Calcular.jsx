@@ -1,5 +1,7 @@
+import { formatarValorFloat } from './Formatar'
+
 // para calcular a diferença entre a Data1 e Data2
-export function calcularEvolucao(primeira, ultima, unidade = '') {
+export function CalcularEvolucao(primeira, ultima, unidade = '') {
     const resultado = parseFloat(ultima) - parseFloat(primeira)
 
     if (resultado > 0) {
@@ -12,7 +14,7 @@ export function calcularEvolucao(primeira, ultima, unidade = '') {
     }
 }
 
-export function calcularDiasEntreDatas(data1, data2) {
+export function CalcularDiasEntreDatas(data1, data2) {
     // converte as datas para um formato que possa calcular
     const d1 = new Date(data1);
     const d2 = new Date(data2);

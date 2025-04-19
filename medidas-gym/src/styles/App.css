@@ -32,14 +32,6 @@ h2 {
     max-width: 600px;
 }
 
-.medida-evo {
-    text-align: center;
-    background-color: var(--cor-fundo-medio);
-    padding: 10px 25px;
-    border-radius: 5px;
-    color: var(--cor-texto);
-}
-
 select[id^="select-data-"] {
     background-color: var(--cor-fundo-medio);
     color: var(--cor-texto); 

@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types'
 import getListaMedidas from '../utils/storege'
 import '../styles/Medidas.css'
+import { CalcularEvolucao, CalcularDiasEntreDatas } from '../utils/Calcular'
+// import { formatarValorFloat } from '../utils/utilitarios'
 
 const ListaMedidas = getListaMedidas()
-
-console.log("Medidas salvas jsx:", ListaMedidas[ListaMedidas.length - 1])
 
 export const GymMedidas = ( {nomeMedida, medida} ) => {
     return (
@@ -20,7 +20,17 @@ GymMedidas.propTypes = {
     medida: PropTypes.string
 }
 
+export const GymEvolucao = ( medida ) => {
+    return (
+        <div className="medida-item-evolucao">
+            <span>{medida || '-'}</span>
+        </div>
+    )
+}
 
+GymEvolucao.propTypes = {
+    medida: PropTypes.string
+}
 
 const NomeMedidas = [
     'Data', 'Altura', 'Peso', 'Ombro', 'Peito', 'Bíceps D',
@@ -31,17 +41,47 @@ const NomeMedidas = [
 
 export const Medida = ({ medida }) => {
     return (
-        <div className="medida">
+        <>
             {NomeMedidas.map((nomeMedida) => (
                 <GymMedidas key={nomeMedida} 
                 nomeMedida={nomeMedida} 
                 medida={medida[nomeMedida] || '-'} />
             ))}
-        </div>
+        </>
     )
 }
+
+export const ResultadoEvolucao = ({ primeira, ultima }) => {
+    const evolucoes = []
+
+    for (const chave in primeira) {
+        if (chave === 'Data') {
+            evolucoes.push(
+                <GymEvolucao key={chave} medida={CalcularDiasEntreDatas(primeira[chave], ultima[chave])} />
+            );
+        } else if (chave === 'Peso') {
+            evolucoes.push(
+                <GymEvolucao key={chave} medida={CalcularEvolucao(primeira[chave], ultima[chave], 'kg')} />
+            );
+        } else {
+            evolucoes.push(
+                <GymEvolucao key={chave} medida={CalcularEvolucao(primeira[chave], ultima[chave], 'cm')} />
+            );
+        }
+    }
+
+    return<>{evolucoes}</>
+}
+
 
 export const MedidasHomePage = () => {
     const ultimaMedida = ListaMedidas[ListaMedidas.length - 1] || {}
     return <Medida medida={ultimaMedida} />
+}
+
+export const MedidasEvolucao = () => {
+    const primeiraMedida = ListaMedidas[0] || {}
+    const ultimaMedida = ListaMedidas[ListaMedidas.length - 1] || {}
+
+    return <ResultadoEvolucao primeira={primeiraMedida} ultima={ultimaMedida} />
 }

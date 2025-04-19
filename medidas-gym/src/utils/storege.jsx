@@ -4,7 +4,7 @@ export default function getListaMedidas() {
 }
 
 const medidas = getListaMedidas()
-console.log("Medidas salvas:", medidas[medidas.length - 1])
+console.log("Medidas salvas:", medidas)
 
 // localStorage.clear()
 
