@@ -15,11 +15,13 @@ export const GymMedidas = ( {nomeMedida, medida} ) => {
     )
 }
 
-// falta o ProTypes da variavel medida
 GymMedidas.propTypes = {
     nomeMedida: PropTypes.string.isRequired,
     medida: PropTypes.string
-  }
+}
+
+
+
 const NomeMedidas = [
     'Data', 'Altura', 'Peso', 'Ombro', 'Peito', 'Bíceps D',
     'Bíceps E', 'Antebraço D', 'Antebraço E', 'Punhos', 'Cintura',
