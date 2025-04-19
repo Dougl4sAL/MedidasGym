@@ -16,7 +16,8 @@ GymButton.propTypes = {
   className: PropTypes.string
 }
 
-// Objeto com todos os botões disponíveis
+// array que vai ser passado para o botão generico 
+// com as propriedades to e o Nome que vai aparecer na tela
 const buttonConfigs = {
   home: { to: "/", text: "Voltar ao Início" },
   adicionar: { to: "/adicionar", text: "Nova Medida" },
@@ -25,9 +26,18 @@ const buttonConfigs = {
 }
 
 // Componente flexível para grupos de botões
+// recebe o array e mapeia ele passando cada elemento para a função
+// GymButton chamando antes a buttonConfigs para chamar todos os atributos
+// key serve para melhorar o react, evitando recriar componentes e melhora desempenho
 export const ButtonGroup = ({ buttons }) => (
   <div className="topo">
-    {buttons.map((buttonKey) => (
+    {/* os ... espalha as propriedades de forma individial
+    sem os ... seria assim: 
+    <GymButton 
+    to={buttonConfigs.adicionar.to} 
+    text={buttonConfigs.adicionar.text} 
+    />   */}
+    {buttons.map((buttonKey) => ( // Chave única para a lista
       <GymButton key={buttonKey} {...buttonConfigs[buttonKey]} />
     ))}
   </div>

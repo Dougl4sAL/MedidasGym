@@ -24,6 +24,10 @@ const MedidaPropTypes = {
     panturrilhaE: ProTypes.number.isRequired
 }
 
+export const GymMedidas = ( id ) => {
+    
+}
+
 const NomeMedidas = [
     'data', 'altura', 'peso', 'ombro', 'peito', 'bicepsD',
     'bicepsE', 'antebracoD', 'antebracoE', 'punho', 'cintura',
