@@ -10,7 +10,7 @@ export const GymMedidas = ( {nomeMedida, medida, unidade = ''} ) => {
     return (
         <div className="medida-item">
             <label>{nomeMedida}:</label>            
-            <span>{medida + ' ' + unidade}</span>
+            <span>{medida + unidade}</span>
         </div>
     )
 }
@@ -42,11 +42,31 @@ const NomeMedidas = [
 export const Medida = ({ medida }) => {
     return (
         <>
-            {NomeMedidas.map((nomeMedida) => (
-                <GymMedidas key={nomeMedida} 
-                nomeMedida={nomeMedida} 
-                medida={medida[nomeMedida] || '-'} />
-            ))}
+        {/* Não pode usar if porque não chama funções JSX */}
+            {NomeMedidas.map((nomeMedida) => {
+                return nomeMedida === 'Data' ? (
+                    <GymMedidas
+                        key={nomeMedida}
+                        nomeMedida={nomeMedida}
+                        medida={medida[nomeMedida]}
+                        unidade=""
+                    />
+                ) : nomeMedida === 'Peso' ? (
+                    <GymMedidas
+                        key={nomeMedida}
+                        nomeMedida={nomeMedida}
+                        medida={medida[nomeMedida]}
+                        unidade=" kg"
+                    />
+                ) : (
+                    <GymMedidas
+                        key={nomeMedida}
+                        nomeMedida={nomeMedida}
+                        medida={medida[nomeMedida]}
+                        unidade=" cm"
+                    />
+                );
+            })}
         </>
     )
 }
@@ -54,8 +74,7 @@ export const Medida = ({ medida }) => {
 export const ResultadoEvolucao = ({ primeira, ultima }) => {
     return (
         <>
-            {/* Renderizando as medidas de evolução */}
-            {Object.keys(primeira).map((chave) => {
+            {NomeMedidas.map((chave) => {
                 if (chave === 'Data') {
                     return (
                         <GymEvolucao
