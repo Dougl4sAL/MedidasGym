@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import getListaMedidas from '../utils/storege'
 import '../styles/Medidas.css'
 import { CalcularEvolucao, CalcularDiasEntreDatas } from '../utils/Calcular'
-// import { formatarValorFloat } from '../utils/utilitarios'
+import { FormatarDataBR, FormatarValorFloat } from '../utils/Formatar'
 
 const ListaMedidas = getListaMedidas()
 
@@ -48,21 +48,21 @@ export const Medida = ({ medida }) => {
                     <GymMedidas
                         key={nomeMedida}
                         nomeMedida={nomeMedida}
-                        medida={medida[nomeMedida]}
+                        medida={FormatarDataBR(medida[nomeMedida])}
                         unidade=""
                     />
                 ) : nomeMedida === 'Peso' ? (
                     <GymMedidas
                         key={nomeMedida}
                         nomeMedida={nomeMedida}
-                        medida={medida[nomeMedida]}
+                        medida={FormatarValorFloat(medida[nomeMedida])}
                         unidade=" kg"
                     />
                 ) : (
                     <GymMedidas
                         key={nomeMedida}
                         nomeMedida={nomeMedida}
-                        medida={medida[nomeMedida]}
+                        medida={FormatarValorFloat(medida[nomeMedida])}
                         unidade=" cm"
                     />
                 );
@@ -79,21 +79,24 @@ export const ResultadoEvolucao = ({ primeira, ultima }) => {
                     return (
                         <GymEvolucao
                             key={chave}                         
-                            medida={CalcularDiasEntreDatas(primeira[chave], ultima[chave])}
+                            medida={CalcularDiasEntreDatas
+                                (primeira[chave], ultima[chave])}
                         />
                     );
                 } else if (chave === 'Peso') {
                     return (
                         <GymEvolucao
                             key={chave}
-                            medida={CalcularEvolucao(primeira[chave], ultima[chave], 'kg')}
+                            medida={CalcularEvolucao
+                                (primeira[chave], ultima[chave], 'kg')}
                         />
                     );
                 } else {
                     return (
                         <GymEvolucao
                             key={chave}
-                            medida={CalcularEvolucao(primeira[chave], ultima[chave], 'cm')}
+                            medida={CalcularEvolucao
+                                (primeira[chave], ultima[chave], 'cm')}
                         />
                     );
                 }

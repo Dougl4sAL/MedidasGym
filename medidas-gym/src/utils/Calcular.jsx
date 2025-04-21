@@ -1,14 +1,14 @@
-import { formatarValorFloat } from './Formatar'
+import { FormatarValorFloat } from './Formatar'
 
 // para calcular a diferença entre a Data1 e Data2
 export function CalcularEvolucao(primeira, ultima, unidade = '') {
     const resultado = parseFloat(ultima) - parseFloat(primeira)
 
     if (resultado > 0) {
-        return '+ ' + formatarValorFloat(resultado, unidade)
+        return '+ ' + FormatarValorFloat(resultado, unidade)
     } else if (resultado < 0) {
         // math.abs() evita na tela fique - - 1.5
-        return '- ' + formatarValorFloat(Math.abs(resultado), unidade)
+        return '- ' + FormatarValorFloat(Math.abs(resultado), unidade)
     } else {
         return '0.0 ' + unidade
     }
