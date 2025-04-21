@@ -65,7 +65,7 @@ export const Medida = ({ medida }) => {
                         medida={FormatarValorFloat(medida[nomeMedida])}
                         unidade=" cm"
                     />
-                );
+                )
             })}
         </>
     )
@@ -82,7 +82,7 @@ export const ResultadoEvolucao = ({ primeira, ultima }) => {
                             medida={CalcularDiasEntreDatas
                                 (primeira[chave], ultima[chave])}
                         />
-                    );
+                    )
                 } else if (chave === 'Peso') {
                     return (
                         <GymEvolucao
@@ -90,7 +90,7 @@ export const ResultadoEvolucao = ({ primeira, ultima }) => {
                             medida={CalcularEvolucao
                                 (primeira[chave], ultima[chave], 'kg')}
                         />
-                    );
+                    )
                 } else {
                     return (
                         <GymEvolucao
@@ -98,12 +98,12 @@ export const ResultadoEvolucao = ({ primeira, ultima }) => {
                             medida={CalcularEvolucao
                                 (primeira[chave], ultima[chave], 'cm')}
                         />
-                    );
+                    )
                 }
             })}
         </>
-    );
-};
+    )
+}
 
 export const MedidasHomePage = () => {
     const ultimaMedida = ListaMedidas[ListaMedidas.length - 1] || {}

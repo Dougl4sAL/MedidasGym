@@ -22,7 +22,7 @@ const buttonConfigs = {
   home: { to: "/", text: "Voltar ao Início" },
   adicionar: { to: "/adicionar", text: "Nova Medida" },
   historico: { to: "/historico", text: "Histórico Medidas" },
-  relatorio: { to: "/relatorio", text: "Relatório Coportal" }
+  relatorio: { to: "/relatorio", text: "Relatório Corporal" }
 }
 
 // Componente flexível para grupos de botões

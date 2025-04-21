@@ -2,7 +2,9 @@ import React from 'react'
 import Navbar from './components/NavBar'
 import { Routes, Route } from 'react-router-dom'
 import AdicionarMedidaPage from './pages/AdicionarMedidaPage'
+import HistoricoPage from './pages/HistoricoPage'
 import HomePage from './pages/HomePage'
+import RelatorioPage from './pages/RelatorioPage'
 import './styles/App.css'
 
 function App() {
@@ -16,6 +18,8 @@ function App() {
         {/* path é o caminho para a pagina e element redenriza os componentes/pagina */}
         <Route path="/" element={<HomePage />} />
         <Route path="/adicionar" element={<AdicionarMedidaPage />} />
+        <Route path="/historico" element={<HistoricoPage />} />
+        <Route path="/relatorio" element={<RelatorioPage />} />
       </Routes>
     </>
   )
