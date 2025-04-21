@@ -6,11 +6,11 @@ import { CalcularEvolucao, CalcularDiasEntreDatas } from '../utils/Calcular'
 
 const ListaMedidas = getListaMedidas()
 
-export const GymMedidas = ( {nomeMedida, medida} ) => {
+export const GymMedidas = ( {nomeMedida, medida, unidade = ''} ) => {
     return (
         <div className="medida-item">
             <label>{nomeMedida}:</label>            
-            <span>{medida}</span>
+            <span>{medida + ' ' + unidade}</span>
         </div>
     )
 }
@@ -20,7 +20,7 @@ GymMedidas.propTypes = {
     medida: PropTypes.string
 }
 
-export const GymEvolucao = ( medida ) => {
+export const GymEvolucao = ({ medida }) => {
     return (
         <div className="medida-item-evolucao">
             <span>{medida || '-'}</span>
@@ -52,27 +52,36 @@ export const Medida = ({ medida }) => {
 }
 
 export const ResultadoEvolucao = ({ primeira, ultima }) => {
-    const evolucoes = []
-
-    for (const chave in primeira) {
-        if (chave === 'Data') {
-            evolucoes.push(
-                <GymEvolucao key={chave} medida={CalcularDiasEntreDatas(primeira[chave], ultima[chave])} />
-            );
-        } else if (chave === 'Peso') {
-            evolucoes.push(
-                <GymEvolucao key={chave} medida={CalcularEvolucao(primeira[chave], ultima[chave], 'kg')} />
-            );
-        } else {
-            evolucoes.push(
-                <GymEvolucao key={chave} medida={CalcularEvolucao(primeira[chave], ultima[chave], 'cm')} />
-            );
-        }
-    }
-
-    return<>{evolucoes}</>
-}
-
+    return (
+        <>
+            {/* Renderizando as medidas de evolução */}
+            {Object.keys(primeira).map((chave) => {
+                if (chave === 'Data') {
+                    return (
+                        <GymEvolucao
+                            key={chave}                         
+                            medida={CalcularDiasEntreDatas(primeira[chave], ultima[chave])}
+                        />
+                    );
+                } else if (chave === 'Peso') {
+                    return (
+                        <GymEvolucao
+                            key={chave}
+                            medida={CalcularEvolucao(primeira[chave], ultima[chave], 'kg')}
+                        />
+                    );
+                } else {
+                    return (
+                        <GymEvolucao
+                            key={chave}
+                            medida={CalcularEvolucao(primeira[chave], ultima[chave], 'cm')}
+                        />
+                    );
+                }
+            })}
+        </>
+    );
+};
 
 export const MedidasHomePage = () => {
     const ultimaMedida = ListaMedidas[ListaMedidas.length - 1] || {}

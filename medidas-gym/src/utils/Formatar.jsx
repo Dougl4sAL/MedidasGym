@@ -10,3 +10,4 @@ export function formatarValorFloat(valor, unidade = '') {
     if (isNaN(numero)) return '-'
     return numero.toFixed(1) + ' ' + unidade
 }
+
