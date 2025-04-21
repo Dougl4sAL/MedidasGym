@@ -32,7 +32,7 @@ GymEvolucao.propTypes = {
     medida: PropTypes.string
 }
 
-const NomeMedidas = [
+export const NomeMedidas = [
     'Data', 'Altura', 'Peso', 'Ombro', 'Peito', 'Bíceps D',
     'Bíceps E', 'Antebraço D', 'Antebraço E', 'Punhos', 'Cintura',
     'Quadril', 'Coxa D', 'Coxa E', 'Coxa Inf. D', 'Coxa Inf. E',

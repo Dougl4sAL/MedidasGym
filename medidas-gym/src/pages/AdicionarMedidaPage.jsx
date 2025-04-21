@@ -1,4 +1,5 @@
 import { AdicionarButtons } from "../components/Buttons"
+import { FormularioMedidas } from "../components/NovaMedida"
 
 export default function AdicionarMedidaPage() {
     return (
@@ -7,7 +8,9 @@ export default function AdicionarMedidaPage() {
             <AdicionarButtons />
 
             <div className="container-info">
+
                 <h2>Adicionar Medida</h2>
+                <FormularioMedidas />
                 
             </div>
 

@@ -1,8 +1,5 @@
-.container-medidas {
-    padding: 30px;
-}
 
-.form-medidas {
+.formulario-medida {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -12,13 +9,13 @@
     margin: 0 auto;
 }
 
-.form-medidas label {
+.formulario-medida label {
     color: var(--cor-texto);
     font-weight: bold;
     margin-right: 30px;
 }
 
-.form-medidas input {
+.formulario-medida input {
     padding: 6px 10px;
     border-radius: 5px;
     border: none;
@@ -26,7 +23,7 @@
     color: var(--cor-texto);
 }
 
-.form-medidas input:focus {
+.formulario-medida input:focus {
     outline: 2px solid var(--cor-primaria);
 }
 
