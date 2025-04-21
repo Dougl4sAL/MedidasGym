@@ -33,7 +33,9 @@ export const FormularioInputMedida = ({ NomeMedida }) => {
                         <FormularioRestante key={nomeMedida} nomeMedida={nomeMedida} />
                     )
                 })}
-                <button type="submit">Adicionar Medida</button>
+                <div className="linha-botao">
+                    <button type="submit" className='btn btn-submit'>Adicionar Medida</button>
+                </div>
             </form>
         </div>
     )
