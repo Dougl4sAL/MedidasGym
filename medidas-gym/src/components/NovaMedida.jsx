@@ -23,13 +23,14 @@ export const FormularioRestante = ({ nomeMedida }) => {
     )
 }
 
-export const FormularioInputMedida = ({ NomeMedida }) => {
+export const FormularioInputMedida = () => {
     return (
         <div className="formulario-medida">
             <form id="formulario-medida" method="post" action="/adicionar">
+                <h2>Adicionar Medida</h2>
                 <FormularioData />
                 {NomeMedidas.map((nomeMedida) => {
-                    return nomeMedida === 'Data' ? null : (
+                    return NomeMedidas === 'Data' ? null : (
                         <FormularioRestante key={nomeMedida} nomeMedida={nomeMedida} />
                     )
                 })}
@@ -42,5 +43,5 @@ export const FormularioInputMedida = ({ NomeMedida }) => {
 }
 
 export const FormularioMedidas = () => {
-    return <FormularioInputMedida nome={NomeMedidas} />
+    return <FormularioInputMedida />
 }

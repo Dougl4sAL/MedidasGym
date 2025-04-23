@@ -9,7 +9,6 @@ export default function AdicionarMedidaPage() {
 
             <div className="container-info">
 
-                <h2>Adicionar Medida</h2>
                 <FormularioMedidas />
                 
             </div>
