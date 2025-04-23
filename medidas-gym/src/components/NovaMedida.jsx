@@ -5,7 +5,8 @@ import { NomeMedidas } from '../components/Medida'
 
 export const FormularioMedidas = () => {
   const navigate = useNavigate()
-
+   // Estado para armazenar os dados do formulário
+    // useState permite adicionar estado a um componente funcional
   const [formData, setFormData] = useState({
     Data: '',
     Altura: '',
@@ -27,19 +28,25 @@ export const FormularioMedidas = () => {
     'Panturrilha E': ''
  })
 
+  // Função para lidar com mudanças nos campos do formulário
   const handleChange = (e) => {
+    // acessa o elemento que disparou o evento
+    // essa const Extrai o nome do campo e seu valor
     const { name, value } = e.target
     setFormData(prev => ({
-      ...prev,
-      [name]: value
+      ...prev, //  Copia todos os valores anteriores
+      [name]: value // Atualiza o valor do campo específico
     }))
   }
 
+    // Função para lidar com o envio do formulário
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault() // Evita recarregamento da página
     
     // Converter valores para número (exceto Data)
     const medidaFormatada = Object.fromEntries(
+      // Object.entries transforma o objeto em um array de pares chave-valor Tipo: [['chave1', 'valor1']]
+      // e depois mapeia cada par para um novo par, convertendo os valores
       Object.entries(formData).map(([key, value]) => [
         key, 
         key === 'Data' ? value : parseFloat(value) || 0
@@ -62,12 +69,17 @@ export const FormularioMedidas = () => {
         {NomeMedidas.map((nomeMedida) => (
           <div className="medida-item" key={nomeMedida}>
             <label htmlFor={nomeMedida}>{nomeMedida}:</label>
+            {/* Operador ternario para renderizar o campo de entrada correto
+            Se o nome da medida for 'Data', renderiza um campo de data
+            caso contrário, um campo numérico */}
             {nomeMedida === 'Data' ? (
               <input
                 type="date"
                 id={nomeMedida}
                 name={nomeMedida}
                 value={formData[nomeMedida]}
+                // chama sempre que o valor mudar para atualizar o estado
+                // O valor do campo é o estado correspondente
                 onChange={handleChange}
                 required
               />
