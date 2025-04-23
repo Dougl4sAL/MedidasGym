@@ -41,9 +41,7 @@ export const FormularioMedidas = () => {
   }
 
     // Função para lidar com o envio do formulário
-  const handleSubmit = (e) => {
-    e.preventDefault() // Evita recarregamento da página
-    
+  const handleSubmit = (e) => {    
     // Converter valores para número (exceto Data)
     const medidaFormatada = Object.fromEntries(
       // Object.entries transforma o objeto em um array de pares chave-valor Tipo: [['chave1', 'valor1']]
