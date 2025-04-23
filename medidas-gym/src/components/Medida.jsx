@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import getListaMedidas from '../utils/storege'
+import {getListaMedidas} from '../utils/storege'
 import '../styles/Medidas.css'
 import { CalcularEvolucao, CalcularDiasEntreDatas } from '../utils/Calcular'
 import { FormatarDataBR, FormatarValorFloat } from '../utils/Formatar'

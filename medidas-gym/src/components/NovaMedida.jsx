@@ -1,47 +1,96 @@
-import PropTypes from 'prop-types'
-import getListaMedidas from '../utils/storege'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { getListaMedidas, salvarMedidas } from '../utils/storege'
 import { NomeMedidas } from '../components/Medida'
-import '../styles/AdicionarMedida.css'
-
-const ListaMedidas = getListaMedidas()
-
-export const FormularioData = () => {
-    return (
-        <div className="medida-item">
-            <label htmlFor="data">Data:</label>
-            <input type="date" id="data" name="data" required />
-        </div>
-    )
-}
-
-export const FormularioRestante = ({ nomeMedida }) => {
-    return (
-        <div className="medida-item">
-            <label htmlFor={nomeMedida}>{nomeMedida}:</label>
-            <input type="number" id={nomeMedida} name={nomeMedida} required />
-        </div>
-    )
-}
-
-export const FormularioInputMedida = () => {
-    return (
-        <div className="formulario-medida">
-            <form id="formulario-medida" method="post" action="/adicionar">
-                <h2>Adicionar Medida</h2>
-                <FormularioData />
-                {NomeMedidas.map((nomeMedida) => {
-                    return NomeMedidas === 'Data' ? null : (
-                        <FormularioRestante key={nomeMedida} nomeMedida={nomeMedida} />
-                    )
-                })}
-                <div className="linha-botao">
-                    <button type="submit" className='btn btn-submit'>Adicionar Medida</button>
-                </div>
-            </form>
-        </div>
-    )
-}
 
 export const FormularioMedidas = () => {
-    return <FormularioInputMedida />
+  const navigate = useNavigate()
+
+  const [formData, setFormData] = useState({
+    Data: '',
+    Altura: '',
+    Peso: '',
+    Ombro: '',
+    Peito: '',
+    'Bíceps D': '',
+    'Bíceps E': '',
+    'Antebraço D': '',
+    'Antebraço E': '',
+    Punhos: '',
+    Cintura: '',
+    Quadril: '',
+    'Coxa D': '',
+    'Coxa E': '',
+    'Coxa Inf. D': '',
+    'Coxa Inf. E': '',
+    'Panturrilha D': '',
+    'Panturrilha E': ''
+ })
+
+  const handleChange = (e) => {
+    const { name, value } = e.target
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }))
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    
+    // Converter valores para número (exceto Data)
+    const medidaFormatada = Object.fromEntries(
+      Object.entries(formData).map(([key, value]) => [
+        key, 
+        key === 'Data' ? value : parseFloat(value) || 0
+      ])
+    )
+
+    const listaAtual = getListaMedidas()
+    const novaLista = [...listaAtual, medidaFormatada]
+    
+    salvarMedidas(novaLista)
+    alert("Medidas salvas com sucesso!")
+    navigate('/');
+  }
+
+  return (
+    <div className="formulario-medida">
+      <form onSubmit={handleSubmit}>
+        <h2>Adicionar Medida</h2>
+        
+        {NomeMedidas.map((nomeMedida) => (
+          <div className="medida-item" key={nomeMedida}>
+            <label htmlFor={nomeMedida}>{nomeMedida}:</label>
+            {nomeMedida === 'Data' ? (
+              <input
+                type="date"
+                id={nomeMedida}
+                name={nomeMedida}
+                value={formData[nomeMedida]}
+                onChange={handleChange}
+                required
+              />
+            ) : (
+              <input
+                type="number"
+                id={nomeMedida}
+                name={nomeMedida}
+                step="0.1"
+                value={formData[nomeMedida]}
+                onChange={handleChange}
+                required
+              />
+            )}
+          </div>
+        ))}
+        
+        <div className="linha-botao">
+          <button type="submit" className="btn btn-submit">
+            Adicionar Medida
+          </button>
+        </div>
+      </form>
+    </div>
+  )
 }

@@ -1,6 +1,11 @@
-// para a listaMedidas para os outros .js
-export default function getListaMedidas() {
+// Para exportar a lista de medidas para os outros arquivos
+export function getListaMedidas() {
     return JSON.parse(localStorage.getItem('medidasGYM')) || []
+}
+
+// Para salvar a lista de medidas no localStorage
+export function salvarMedidas(medidas) {
+    localStorage.setItem('medidasGYM', JSON.stringify(medidas))
 }
 
 const medidas = getListaMedidas()
