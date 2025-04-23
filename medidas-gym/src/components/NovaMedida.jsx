@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { getListaMedidas, salvarMedidas } from '../utils/storege'
 import { NomeMedidas } from '../components/Medida'
+import '../styles/AdicionarMedida.css'
 
 export const FormularioMedidas = () => {
   const navigate = useNavigate()
@@ -63,7 +64,7 @@ export const FormularioMedidas = () => {
 
   return (
     <div className="formulario-medida">
-      <form onSubmit={handleSubmit}>
+      <form id="formulario-medida" onSubmit={handleSubmit}>
         <h2>Adicionar Medida</h2>
         
         {NomeMedidas.map((nomeMedida) => (
