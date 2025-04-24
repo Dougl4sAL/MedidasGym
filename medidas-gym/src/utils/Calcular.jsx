@@ -1,4 +1,5 @@
 import { FormatarValorFloat } from './Formatar'
+import PropTypes from 'prop-types'
 
 // para calcular a diferença entre a Data1 e Data2
 export function CalcularEvolucao(primeira, ultima, unidade = '') {
@@ -33,4 +34,54 @@ export function CalcularDiasEntreDatas(data1, data2) {
         return diferencaEmDias;
     }
 }
+
+// Calcula a diferença entre duas medidas
+const GymEvolucao = ({ medida }) => {
+    return (
+        <div className="medida-item-evolucao">
+            <span>{medida || '-'}</span>
+        </div>
+    )
+}
+
+GymEvolucao.propTypes = {
+    medida: PropTypes.string
+}
+
+export const ResultadoEvolucao = ({ primeira, ultima }) => {
+    return (
+        <>
+            {NomeMedidas.map((chave) => {
+                if (chave === 'Data') {
+                    return (
+                        <GymEvolucao
+                            key={chave}                         
+                            medida={CalcularDiasEntreDatas
+                                (primeira[chave], ultima[chave])}
+                        />
+                    )
+                } else if (chave === 'Peso') {
+                    return (
+                        <GymEvolucao
+                            key={chave}
+                            medida={CalcularEvolucao
+                                (primeira[chave], ultima[chave], 'kg')}
+                        />
+                    )
+                } else {
+                    return (
+                        <GymEvolucao
+                            key={chave}
+                            medida={CalcularEvolucao
+                                (primeira[chave], ultima[chave], 'cm')}
+                        />
+                    )
+                }
+            })}
+        </>
+    )
+}
+
+
+
   

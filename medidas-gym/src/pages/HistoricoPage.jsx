@@ -1,4 +1,5 @@
 import { HistoricoButtons } from "../components/Buttons"
+import HistoricoPage from "../components/Historico"
 
 export default function AdicionarMedidaPage() {
     return (
@@ -8,7 +9,7 @@ export default function AdicionarMedidaPage() {
 
             <div className="container-info">
                 <h2>Historico de Medidas</h2>
-                
+                <HistoricoPage />
             </div>
 
         </div>

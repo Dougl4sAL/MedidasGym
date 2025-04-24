@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import {getListaMedidas} from '../utils/storege'
 import '../styles/Medidas.css'
-import { CalcularEvolucao, CalcularDiasEntreDatas } from '../utils/Calcular'
+import { ResultadoEvolucao } from '../utils/Calcular'
 import { FormatarDataBR, FormatarValorFloat } from '../utils/Formatar'
 
 const ListaMedidas = getListaMedidas()
@@ -17,18 +17,6 @@ export const GymMedidas = ( {nomeMedida, medida, unidade = ''} ) => {
 
 GymMedidas.propTypes = {
     nomeMedida: PropTypes.string.isRequired,
-    medida: PropTypes.string
-}
-
-const GymEvolucao = ({ medida }) => {
-    return (
-        <div className="medida-item-evolucao">
-            <span>{medida || '-'}</span>
-        </div>
-    )
-}
-
-GymEvolucao.propTypes = {
     medida: PropTypes.string
 }
 
@@ -66,40 +54,6 @@ const Medida = ({ medida }) => {
                         unidade=" cm"
                     />
                 )
-            })}
-        </>
-    )
-}
-
-export const ResultadoEvolucao = ({ primeira, ultima }) => {
-    return (
-        <>
-            {NomeMedidas.map((chave) => {
-                if (chave === 'Data') {
-                    return (
-                        <GymEvolucao
-                            key={chave}                         
-                            medida={CalcularDiasEntreDatas
-                                (primeira[chave], ultima[chave])}
-                        />
-                    )
-                } else if (chave === 'Peso') {
-                    return (
-                        <GymEvolucao
-                            key={chave}
-                            medida={CalcularEvolucao
-                                (primeira[chave], ultima[chave], 'kg')}
-                        />
-                    )
-                } else {
-                    return (
-                        <GymEvolucao
-                            key={chave}
-                            medida={CalcularEvolucao
-                                (primeira[chave], ultima[chave], 'cm')}
-                        />
-                    )
-                }
             })}
         </>
     )
