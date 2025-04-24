@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 import { FormatarValorFloat } from './Formatar'
 import { NomeMedidas } from '../components/Medida'
+import '../styles/Medidas.css'
 
 // para calcular a diferença entre a Data1 e Data2
 export function CalcularEvolucao(primeira, ultima, unidade = '') {
@@ -39,7 +40,7 @@ export function CalcularDiasEntreDatas(data1, data2) {
 // Calcula a diferença entre duas medidas
 const GymEvolucao = ({ medida }) => {
     return (
-        <div className="medida-item-evolucao">
+        <div className="medida-item">
             <span>{medida || '-'}</span>
         </div>
     )

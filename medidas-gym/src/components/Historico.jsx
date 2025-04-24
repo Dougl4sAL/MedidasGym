@@ -15,7 +15,7 @@ const NOME_MEDIDAS = [
 
 // Componente para exibir cada linha de medida
 const GymMedidas = ({ nomeMedida, medida = '-', unidade = '' }) => (
-  <div className="medida">
+  <div className="medida-item">
     <label>{nomeMedida}:</label>
     <span>{medida}{unidade}</span>
   </div>
@@ -85,22 +85,22 @@ export default function HistoricoPage() {
     <>
         <div className="container-info">
             {/* COMPARAÇÃO 1 */}
-            <div className="container-medidas comparacao1">
+            <div className="container-evolucao comparacao1">
             <h2>Comparar 1º mês</h2>
             
             {/* Select para primeira data */}
-            <div className="medida">
+            <div className="medida-item">
                 <label>Data:</label>
                 <select 
-                value={medida1?.Data || ''} 
-                onChange={(e) => setMedida1(medidas.find(m => m.Data === e.target.value))}
-                >
-                <option value="">Selecionar Data</option>
-                {medidas.map((medida, index) => (
-                    <option key={index} value={medida.Data}>
-                    {FormatarDataBR(medida.Data)}
-                    </option>
-                ))}
+                  value={medida1?.Data || ''} 
+                  onChange={(e) => setMedida1(medidas.find(m => m.Data === e.target.value))}
+                  >
+                  <option value="">Selecionar Data</option>
+                  {medidas.map((medida, index) => (
+                      <option key={index} value={medida.Data}>
+                      {FormatarDataBR(medida.Data)}
+                      </option>
+                  ))}
                 </select>
             </div>
             
@@ -116,11 +116,11 @@ export default function HistoricoPage() {
             </div>
 
             {/* COMPARAÇÃO 2 */}
-            <div className="container-medidas comparacao2">
+            <div className="container-evolucao comparacao2">
             <h2>Comparar 2º mês</h2>
             
             {/* Select para segunda data */}
-            <div className="medida">
+            <div className="medida-item">
                 <label>Data:</label>
                 <select 
                 value={medida2?.Data || ''} 
