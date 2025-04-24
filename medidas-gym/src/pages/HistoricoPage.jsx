@@ -8,8 +8,9 @@ export default function AdicionarMedidaPage() {
             <HistoricoButtons />
 
             <div className="container-info">
-                <h2>Historico de Medidas</h2>
+
                 <HistoricoPage />
+
             </div>
 
         </div>

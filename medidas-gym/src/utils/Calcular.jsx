@@ -1,5 +1,6 @@
-import { FormatarValorFloat } from './Formatar'
 import PropTypes from 'prop-types'
+import { FormatarValorFloat } from './Formatar'
+import { NomeMedidas } from '../components/Medida'
 
 // para calcular a diferença entre a Data1 e Data2
 export function CalcularEvolucao(primeira, ultima, unidade = '') {
