@@ -20,7 +20,7 @@ GymMedidas.propTypes = {
     medida: PropTypes.string
 }
 
-export const GymEvolucao = ({ medida }) => {
+const GymEvolucao = ({ medida }) => {
     return (
         <div className="medida-item-evolucao">
             <span>{medida || '-'}</span>
@@ -39,7 +39,7 @@ export const NomeMedidas = [
     'Panturrilha D', 'Panturrilha E'
 ] 
 
-export const Medida = ({ medida }) => {
+const Medida = ({ medida }) => {
     return (
         <>
         {/* Não pode usar if porque não chama funções JSX */}
@@ -62,7 +62,7 @@ export const Medida = ({ medida }) => {
                     <GymMedidas
                         key={nomeMedida}
                         nomeMedida={nomeMedida}
-                        medida={FormatarValorFloat(medida[nomeMedida])}
+                        medida={medida[nomeMedida]}
                         unidade=" cm"
                     />
                 )
