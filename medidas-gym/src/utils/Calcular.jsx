@@ -54,12 +54,15 @@ export const ResultadoEvolucao = ({ primeira, ultima }) => {
     return (
         <>
             {NomeMedidas.map((chave) => {
+                // verifica se a chave existe no objeto antes de acessar
+                const valorPrimeira = primeira?.[chave] || '-';
+                const valorUltima = ultima?.[chave] || '-';
                 if (chave === 'Data') {
                     return (
                         <GymEvolucao
                             key={chave}                         
                             medida={CalcularDiasEntreDatas
-                                (primeira[chave], ultima[chave])}
+                                (valorPrimeira, valorUltima)}
                         />
                     )
                 } else if (chave === 'Peso') {
@@ -67,7 +70,7 @@ export const ResultadoEvolucao = ({ primeira, ultima }) => {
                         <GymEvolucao
                             key={chave}
                             medida={CalcularEvolucao
-                                (primeira[chave], ultima[chave], 'kg')}
+                                (valorPrimeira, valorUltima, 'kg')}
                         />
                     )
                 } else {
@@ -75,7 +78,7 @@ export const ResultadoEvolucao = ({ primeira, ultima }) => {
                         <GymEvolucao
                             key={chave}
                             medida={CalcularEvolucao
-                                (primeira[chave], ultima[chave], 'cm')}
+                                (valorPrimeira, valorUltima, 'cm')}
                         />
                     )
                 }

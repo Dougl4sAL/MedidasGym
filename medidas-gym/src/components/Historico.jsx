@@ -2,7 +2,7 @@
 import { useState } from 'react'
 import { getListaMedidas } from '../utils/storege'
 import { FormatarDataBR, FormatarValorFloat } from '../utils/Formatar'
-import { CalcularEvolucao, CalcularDiasEntreDatas } from '../utils/Calcular'
+import { CalcularEvolucao, CalcularDiasEntreDatas, ResultadoEvolucao } from '../utils/Calcular'
 import '../styles/Medidas.css'
 
 // Lista de medidas para mapeamento
@@ -28,47 +28,8 @@ const GymMedidas = ({ nomeMedida, medida = '-', unidade = '' }) => {
         <label>{nomeMedida}:</label>
         <span>{medida}{unidade}</span>
       </div>
-    );
+    )
   }
-};
-
-// Componente para exibir cada linha de evolução
-const GymEvolucao = ({ medida = '-' }) => (
-  <div className="medida-evo">
-    <span>{medida}</span>
-  </div>
-)
-
-// Componente para o resultado da evolução
-const ResultadoEvolucao = ({ primeira, ultima }) => {
-  if (!primeira || !ultima) {
-    return NOME_MEDIDAS.map(chave => (
-      <GymEvolucao key={chave} />
-    ))
-  }
-
-  return (
-    <>
-      {NOME_MEDIDAS.map((chave) => {
-        if (chave === 'Data') {
-          return (
-            <GymEvolucao
-              key={chave}
-              medida={CalcularDiasEntreDatas(primeira[chave], ultima[chave])}
-            />
-          )
-        }
-        
-        const unidade = chave === 'Peso' ? 'kg' : 'cm'
-        return (
-          <GymEvolucao
-            key={chave}
-            medida={CalcularEvolucao(primeira[chave], ultima[chave], unidade)}
-          />
-        )
-      })}
-    </>
-  )
 }
 
 export default function HistoricoPage() {
