@@ -14,12 +14,23 @@ const NOME_MEDIDAS = [
 ]
 
 // Componente para exibir cada linha de medida
-const GymMedidas = ({ nomeMedida, medida = '-', unidade = '' }) => (
-  <div className="medida-item">
-    <label>{nomeMedida}:</label>
-    <span>{medida}{unidade}</span>
-  </div>
-)
+const GymMedidas = ({ nomeMedida, medida = '-', unidade = '' }) => {
+  if (medida === '-') {
+    return (
+      <div className="medida-item">
+        <label>{nomeMedida}:</label>
+        <span>{medida}</span>
+      </div>
+    );
+  } else {
+    return (
+      <div className="medida-item">
+        <label>{nomeMedida}:</label>
+        <span>{medida}{unidade}</span>
+      </div>
+    );
+  }
+};
 
 // Componente para exibir cada linha de evolução
 const GymEvolucao = ({ medida = '-' }) => (

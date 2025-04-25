@@ -18,3 +18,16 @@
     border-radius: 5px;
     color: var(--cor-texto);
 }
+
+select {
+    background-color: var(--cor-fundo-medio);
+    border-color: var(--cor-fundo);
+    color: var(--cor-texto); 
+    border: none;
+    padding: 0 5px;
+}
+
+select option {
+    background-color: var(--cor-fundo-medio);
+    color: var(--cor-texto); /* Para ajustar a cor do texto */
+}

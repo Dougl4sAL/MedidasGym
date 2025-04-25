@@ -31,15 +31,3 @@ h2 {
     gap: 10px;
     max-width: 600px;
 }
-
-select[id^="select-data-"] {
-    background-color: var(--cor-fundo-medio);
-    color: var(--cor-texto); 
-    border: none;
-    padding: 0 5px;
-}
-
-select[id^="select-data-"] option {
-    background-color: var(--cor-fundo-medio);
-    color: var(--cor-texto); /* Para ajustar a cor do texto */
-}
