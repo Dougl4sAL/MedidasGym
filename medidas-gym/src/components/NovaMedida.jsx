@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { getListaMedidas, salvarMedidas } from '../utils/storege'
 import { NomeMedidas } from '../components/Medida'
-import '../styles/AdicionarMedida.css'
+import '../styles/Medidas.css'
 
 export const FormularioMedidas = () => {
   const navigate = useNavigate()
@@ -67,7 +67,7 @@ export const FormularioMedidas = () => {
         
         {NomeMedidas.map((nomeMedida) => (
           <div className="medida-item" key={nomeMedida}>
-            <label htmlFor={nomeMedida}>{nomeMedida}:</label>
+            <label htmlFor={nomeMedida} className='medida-item-label-input'>{nomeMedida}:</label>
             {/* Operador ternario para renderizar o campo de entrada correto
             Se o nome da medida for 'Data', renderiza um campo de data
             caso contrário, um campo numérico */}

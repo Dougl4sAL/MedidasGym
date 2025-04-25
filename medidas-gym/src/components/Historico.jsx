@@ -3,32 +3,31 @@ import { useState } from 'react'
 import { getListaMedidas } from '../utils/storege'
 import { FormatarDataBR, FormatarValorFloat } from '../utils/Formatar'
 import { ResultadoEvolucao } from '../utils/Calcular'
+import { NomeMedidas } from '../components/Medida'
 import '../styles/Medidas.css'
-
-// Lista de medidas para mapeamento
-const NOME_MEDIDAS = [
-  'Data', 'Altura', 'Peso', 'Ombro', 'Peito', 'Bíceps D',
-  'Bíceps E', 'Antebraço D', 'Antebraço E', 'Punhos', 'Cintura',
-  'Quadril', 'Coxa D', 'Coxa E', 'Coxa Inf. D', 'Coxa Inf. E',
-  'Panturrilha D', 'Panturrilha E'
-]
 
 // Componente para exibir cada linha de medida
 const GymMedidas = ({ nomeMedida, medida = '-', unidade = '' }) => {
-  if (medida === '-') {
-    return (
-      <div className="medida-item">
-        <label>{nomeMedida}:</label>
-        <span>{medida}</span>
-      </div>
-    )
-  } else {
-    return (
-      <div className="medida-item">
-        <label>{nomeMedida}:</label>
-        <span>{medida}{unidade}</span>
-      </div>
-    )
+  // Não redenderiza o campo Data
+  if (nomeMedida === 'Data') {
+    return
+  } else { // Renderiza os outros campos
+    // se Medida igual a '-' não mostra a unidade de medida
+    if (medida === '-') {
+      return (
+        <div className="medida-item">
+          <label>{nomeMedida}:</label>
+          <span>{medida}</span>
+        </div>
+      )
+    } else {
+      return (
+        <div className="medida-item">
+          <label>{nomeMedida}:</label>
+          <span>{medida}{unidade}</span>
+        </div>
+      )
+    }
   }
 }
 
@@ -65,6 +64,8 @@ export default function HistoricoPage() {
                 <label>Data:</label>
                 <select 
                   value={medida1?.Data || ''} 
+                  // Atualiza o estado medida1 com a medida correspondente à data selecionada
+                  // O valor do select é a data, então procura a medida correspondente
                   onChange={(e) => setMedida1(medidas.find(m => m.Data === e.target.value))}
                   >
                   <option value="">Selecionar Data</option>
@@ -77,7 +78,7 @@ export default function HistoricoPage() {
             </div>
             
             {/* Lista de medidas */}
-            {NOME_MEDIDAS.map(chave => (
+            {NomeMedidas.map(chave => (
                 <GymMedidas
                 key={`m1-${chave}`}
                 nomeMedida={chave}
@@ -108,7 +109,7 @@ export default function HistoricoPage() {
             </div>
             
             {/* Lista de medidas */}
-            {NOME_MEDIDAS.map(chave => (
+            {NomeMedidas.map(chave => (
                 <GymMedidas
                 key={`m2-${chave}`}
                 nomeMedida={chave}
