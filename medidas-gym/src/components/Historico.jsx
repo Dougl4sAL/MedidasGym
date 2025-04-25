@@ -2,7 +2,7 @@
 import { useState } from 'react'
 import { getListaMedidas } from '../utils/storege'
 import { FormatarDataBR, FormatarValorFloat } from '../utils/Formatar'
-import { CalcularEvolucao, CalcularDiasEntreDatas, ResultadoEvolucao } from '../utils/Calcular'
+import { ResultadoEvolucao } from '../utils/Calcular'
 import '../styles/Medidas.css'
 
 // Lista de medidas para mapeamento
@@ -21,7 +21,7 @@ const GymMedidas = ({ nomeMedida, medida = '-', unidade = '' }) => {
         <label>{nomeMedida}:</label>
         <span>{medida}</span>
       </div>
-    );
+    )
   } else {
     return (
       <div className="medida-item">
