@@ -1,8 +1,8 @@
+import '../styles/Medidas.css'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { getListaMedidas, salvarMedidas } from '../utils/storege'
 import { NomeMedidas } from '../components/Medida'
-import '../styles/Medidas.css'
+import { getListaMedidas, salvarMedidas } from '../utils/storege'
 
 export const FormularioMedidas = () => {
   const navigate = useNavigate()
@@ -57,7 +57,7 @@ export const FormularioMedidas = () => {
     
     salvarMedidas(novaLista)
     alert("Medidas salvas com sucesso!")
-    navigate('/');
+    navigate('/')
   }
 
   return (
@@ -87,6 +87,7 @@ export const FormularioMedidas = () => {
                 type="number"
                 id={nomeMedida}
                 name={nomeMedida}
+                // step é usado para permitir entradas decimais
                 step="0.1"
                 value={formData[nomeMedida]}
                 onChange={handleChange}

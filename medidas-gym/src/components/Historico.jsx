@@ -1,10 +1,10 @@
 // HistoricoPage.jsx
-import { useState } from 'react'
-import { getListaMedidas } from '../utils/storege'
-import { FormatarDataBR, FormatarValorFloat } from '../utils/Formatar'
-import { ResultadoEvolucao } from '../utils/Calcular'
-import { NomeMedidas } from '../components/Medida'
 import '../styles/Medidas.css'
+import { useState } from 'react'
+import { NomeMedidas } from '../components/Medida'
+import { getListaMedidas } from '../utils/storege'
+import { ResultadoEvolucao } from '../utils/Calcular'
+import { FormatarDataBR, FormatarValorFloat } from '../utils/Formatar'
 
 // Componente para exibir cada linha de medida
 const GymMedidas = ({ nomeMedida, medida = '-', unidade = '' }) => {

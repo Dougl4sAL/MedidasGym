@@ -1,6 +1,6 @@
+import '../styles/Medidas.css'
 import PropTypes from 'prop-types'
 import {getListaMedidas} from '../utils/storege'
-import '../styles/Medidas.css'
 import { ResultadoEvolucao } from '../utils/Calcular'
 import { FormatarDataBR, FormatarValorFloat } from '../utils/Formatar'
 
